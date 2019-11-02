@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg bg-custom font-weight-bold">
+    <a class="navbar-brand" routerLink=""><i class="mdi mdi-pizza" style="color: #ffeb3b;"></i></a>
+
+    <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/home">Inicio</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a class="nav-link" routerLink="/products">Productos</a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-light my-2 my-sm-0" type="button" routerLink="/cart"><i class="mdi mdi-cart mr-1"></i>Carrito</button>
+        <button class="btn btn-outline-light my-2 my-sm-0" type="button" routerLink=""><i class="mdi mdi-login-variant mr-1"></i>Login</button>
+    </div>
+</nav>

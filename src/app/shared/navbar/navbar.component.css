@@ -1,0 +1,11 @@
+.bg-custom {
+    background-color: #f83a3a;
+}
+
+a {
+    color: #f9a825;
+}
+
+.active a {
+    color: #ffeb3b;
+}
