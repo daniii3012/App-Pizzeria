@@ -16,6 +16,7 @@ import { OrderComponent } from './pages/chef/order/order.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { WaiterComponent } from './pages/waiter/waiter.component';
 import { ChefComponent } from './pages/chef/chef.component';
+import { UserComponent } from './pages/user/user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ChefComponent } from './pages/chef/chef.component';
     OrderComponent,
     AdminComponent,
     WaiterComponent,
-    ChefComponent
+    ChefComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
