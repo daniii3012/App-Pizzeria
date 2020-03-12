@@ -13,6 +13,9 @@ import { ProductDashboardComponent } from './pages/admin/product-dashboard/produ
 import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashboard.component';
 import { NewOrderComponent } from './pages/waiter/new-order/new-order.component';
 import { OrderComponent } from './pages/chef/order/order.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { WaiterComponent } from './pages/waiter/waiter.component';
+import { ChefComponent } from './pages/chef/chef.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { OrderComponent } from './pages/chef/order/order.component';
     ProductDashboardComponent,
     UserDashboardComponent,
     NewOrderComponent,
-    OrderComponent
+    OrderComponent,
+    AdminComponent,
+    WaiterComponent,
+    ChefComponent
   ],
   imports: [
     BrowserModule,
