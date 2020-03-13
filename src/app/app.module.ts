@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/user/products/products.component';
+import { ProductsComponent } from './pages/home/products/products.component';
 import { ShoppingHistoryComponent } from './pages/user/shopping-history/shopping-history.component';
 import { PurchaseComponent } from './pages/user/purchase/purchase.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -17,6 +17,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { WaiterComponent } from './pages/waiter/waiter.component';
 import { ChefComponent } from './pages/chef/chef.component';
 import { UserComponent } from './pages/user/user.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserComponent } from './pages/user/user.component';
     AdminComponent,
     WaiterComponent,
     ChefComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

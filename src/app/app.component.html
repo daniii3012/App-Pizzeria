@@ -1,7 +1,13 @@
-<app-navbar></app-navbar>
-<div class="text-center m-3">
-    <div class="alert alert-primary" role="alert">
-        Prototipo de interfaz, todas las pestañas se dispondran al mismo tiempo. Cambiara de acuerdo al tipo de usuario (Cliente, empleado o administrador)
+<div *ngIf="login">
+    <app-navbar></app-navbar>
+    <div class="text-center m-3">
+        <div class="alert alert-primary" role="alert">
+            Prototipo de interfaz, todas las pestañas se dispondran al mismo tiempo. Cambiara de acuerdo al tipo de usuario (Cliente, empleado o administrador)
+        </div>
     </div>
+    <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+
+<div *ngIf="!login">
+    <app-login></app-login>
+</div>
