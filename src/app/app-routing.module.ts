@@ -18,7 +18,6 @@ const routes: Routes = [
   { path: 'kitchen', component: ChefComponent },
   { path: 'user/:id', component: UserComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'login', component: LoginComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

@@ -9,5 +9,5 @@ export class AppComponent {
   title = 'app-pizzeria';
 
   // Prueba
-  login: boolean = false;
+  login: boolean = true;
 }

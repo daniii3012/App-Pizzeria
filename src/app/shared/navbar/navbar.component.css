@@ -1,13 +1,14 @@
 .bg-custom {
-    background-color: #f83a3a;
+    /*background-color: #f83a3a;*/
+    background: url(../../../assets/images/pizza2.jpg) no-repeat center center fixed;
 }
 
 a {
-    color: #f9a825;
+    color: #868686;
     text-decoration: none;
 }
 
 .active a {
-    color: #ffeb3b;
+    color: #ffffff;
     text-decoration: none;
 }

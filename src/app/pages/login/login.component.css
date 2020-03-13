@@ -1,0 +1,11 @@
+.full-page {
+    background: url(../../../assets/images/pizza1.jpg) no-repeat center center fixed;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.card {
+    border: 0;
+    background-color: #ffffffe0;
+}
