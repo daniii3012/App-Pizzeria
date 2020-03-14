@@ -11,8 +11,8 @@ npm install -g @angular/cli
 Luego de clonar el repositorio se iniciara el proyecto de angular, se dirigira a la carpeta donde clono el repo, allí mediante la consola de comandos ejecutara:  
 npm install  
 
-*Firebase* 
-Antes de ejecutar el proyecto es necesario instalar Firebase en Angular, para ello ejecutar en consola:
+*Firebase*  
+Antes de ejecutar el proyecto es necesario instalar Firebase en Angular, para ello ejecutar en consola:  
 npm install firebase @angular/fire --save
   
 Para inicializar el proyecto:  
