@@ -9,8 +9,15 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ product.nombre }}</h5>
                     <div class="card-text">
-                        <span>Precio: {{ product.precio }}</span><br>
-                        <span *ngIf="product.stock > 0">Disponible</span>
+                        <div class="row">
+                            <div class="col-auto text-left">
+                                <span>Precio: {{ product.precio }}</span><br>
+                                <span *ngIf="product.stock > 0">Disponible</span>
+                            </div>
+                            <div class="col text-right" *ngIf="product.stock > 0" style="vertical-align: middle">
+                                <button type="button" (click)="addCart(product)" class="btn btn-outline-success btn-sm">Add</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
