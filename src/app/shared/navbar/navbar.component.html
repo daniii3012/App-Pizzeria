@@ -23,8 +23,8 @@
                 <a class="nav-link" routerLink="/admin">Admin</a>
             </li>
         </ul>
-        <span class="navbar-text">
-            <a routerLink="/user/">Usuario</a>
+        <span class="navbar-text" *ngIf="auth.afAuth.authState | async as user">
+            <a routerLink="/user/{{ user.userID }}">{{ user.displayName }}</a>
         </span>
         <button class="btn btn-outline-light my-2 my-sm-0" type="button" routerLink="/cart"><i class="mdi mdi-cart mr-1"></i>Carrito</button>
         <button class="btn btn-outline-light my-2 my-sm-0" type="button" (click)="auth.logout()">Salir</button>

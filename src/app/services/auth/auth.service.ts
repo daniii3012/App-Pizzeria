@@ -47,6 +47,7 @@ export class AuthService {
     nombre: string,
     apellido: string,
     telefono: string,
+    direccion: string,
     rol: string,
     //photoURL: string,
     ) {
@@ -55,7 +56,7 @@ export class AuthService {
         res.user.updateProfile({
           displayName: alias
         })
-        this.addUserDb(res.user, userID, nombre, apellido, telefono, rol);
+        this.addUserDb(res.user, userID, nombre, apellido, telefono, direccion, rol);
       }).catch(err => console.log(err.message));
   }
 
@@ -65,19 +66,21 @@ export class AuthService {
     nombre,
     apellido,
     telefono,
+    direccion,
     rol
     ){
     const userRef: AngularFirestoreDocument<any> = this.afStore.doc(`usuario/${user.uid}`);
     this.afStore.doc<any>(`usuario/${user.uid}`).valueChanges().subscribe( // llama a la base de datos usuario
       db => {
         const data: any = {
-          id: user.uid,
+          uid: user.uid,
           email: user.email,
           alias: user.displayName,
           userID: userID,
           nombre: nombre,
           apellido: apellido,
           telefono: telefono,
+          direccion: direccion,
           rol: rol
         }
         return userRef.set(data, { merge: true })
