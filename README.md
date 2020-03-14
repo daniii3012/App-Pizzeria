@@ -21,6 +21,11 @@ ng serve
 Ahora podra ver la página web en http://localhost:4200/  
 
 # AppPizzeria
+https://app-pizzeria.web.app/  
+Email de prueba: test@email.com  
+Contraseña: 123test  
+
+# AppPizzeria
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
