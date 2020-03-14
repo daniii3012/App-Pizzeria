@@ -15,10 +15,12 @@ import { AuthGuard } from './services/guards/auth.guard';
 import { ClienteGuard } from './services/guards/cliente/cliente.guard';
 import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashboard.component';
 import { ProductDashboardComponent } from './pages/admin/product-dashboard/product-dashboard.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent, canActivate: [ClienteGuard] },
   { path: 'waiter', component: WaiterComponent, canActivate: [EmpleadoGuard] },

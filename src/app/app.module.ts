@@ -28,6 +28,7 @@ import { WaiterComponent } from './pages/waiter/waiter.component';
 import { ChefComponent } from './pages/chef/chef.component';
 import { UserComponent } from './pages/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LoginComponent } from './pages/login/login.component';
     WaiterComponent,
     ChefComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

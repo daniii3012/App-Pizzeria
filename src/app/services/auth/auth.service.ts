@@ -56,7 +56,7 @@ export class AuthService {
         res.user.updateProfile({
           displayName: alias
         })
-        this.addUserDb(res.user, userID, nombre, apellido, telefono, direccion, rol);
+        this.addUserDb(res.user, userID, nombre, apellido, alias, telefono, direccion, rol);
       }).catch(err => console.log(err.message));
   }
 
@@ -65,6 +65,7 @@ export class AuthService {
     userID,
     nombre,
     apellido,
+    alias,
     telefono,
     direccion,
     rol
@@ -75,7 +76,7 @@ export class AuthService {
         const data: any = {
           uid: user.uid,
           email: user.email,
-          alias: user.displayName,
+          alias: alias,
           userID: userID,
           nombre: nombre,
           apellido: apellido,
