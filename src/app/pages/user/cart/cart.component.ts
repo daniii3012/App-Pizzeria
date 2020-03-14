@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class CartComponent implements OnInit {
 
-  cart: Observable<any[]>;
+  cart: any;
   products: Observable<any[]>;
 
   constructor(
