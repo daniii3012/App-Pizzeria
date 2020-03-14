@@ -6,10 +6,14 @@ Para instalar *Angular* es necesario tener *NodeJS*
 Se puede descargar *NodeJS* desde su página princial https://nodejs.org/es/
 ### Angular
 Para desplegar la pagina web es necesario instalar el CLI de Angular *(Angular CLI)*, esto se hara por medio de *NodeJS* mediante la consola de comandos  
-npm install -g @angular/cli  
+npm install -g @angular/cli 
 ### Inicializacion del proyecto  
 Luego de clonar el repositorio se iniciara el proyecto de angular, se dirigira a la carpeta donde clono el repo, allí mediante la consola de comandos ejecutara:  
-npm install   
+npm install  
+
+*Firebase*
+Antes de ejecutar el proyecto es necesario instalar Firebase en Angular, para ello ejecutar en consola:
+npm install firebase @angular/fire --save
   
 Para inicializar el proyecto:  
 ng serve  
