@@ -13,6 +13,8 @@ import { EmpleadoGuard } from './services/guards/empleado/empleado.guard';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { ClienteGuard } from './services/guards/cliente/cliente.guard';
+import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashboard.component';
+import { ProductDashboardComponent } from './pages/admin/product-dashboard/product-dashboard.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'kitchen', component: ChefComponent, canActivate: [EmpleadoGuard] },
   { path: 'user/:id', component: UserComponent, canActivate: [ClienteGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AdminGuard] },
+  { path: 'product-dashboard', component: ProductDashboardComponent, canActivate: [AdminGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

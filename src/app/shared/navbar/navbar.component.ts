@@ -8,9 +8,20 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  rol: string;
+
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.afAuth.authState.subscribe(
+      auth => {
+        if (auth) {
+          this.auth.getUserRole(auth.uid).subscribe(
+            userRole => this.rol = userRole.rol
+          )
+        }
+      }
+    )
   }
 
 }
