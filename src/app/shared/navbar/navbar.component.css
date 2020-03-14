@@ -1,10 +1,32 @@
+/*
+@media (min-width: 979px) {
+    .bg-custom {
+        background: url(../../../assets/images/pizza2.jpg) no-repeat center center fixed;
+    }
+    a {
+        color: #999999;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 978px) {
+    .bg-custom {
+        background: #f83a3a;
+    }
+    a {
+        color: #cacaca;
+        text-decoration: none;
+    }
+}
+*/
+
 .bg-custom {
     /*background-color: #f83a3a;*/
-    background: url(../../../assets/images/pizza2.jpg) no-repeat center center fixed;
+    background: #f83a3a;
 }
 
 a {
-    color: #868686;
+    color: #dadada;
     text-decoration: none;
 }
 

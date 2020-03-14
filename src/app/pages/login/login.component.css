@@ -1,11 +1,23 @@
-.full-page {
-    background: url(../../../assets/images/pizza1.jpg) no-repeat center center fixed;
-    height: 100%;
-    width: 100%;
-    position: fixed;
+@media (min-width: 979px) {
+    .full-page {
+        background: url(../../../assets/images/pizza.jpg) no-repeat center center fixed;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+    }
+}
+
+@media (max-width: 978px) {
+    .full-page {
+        background: url(../../../assets/images/pizza.jpg) no-repeat fixed;
+        background-size: 1200px;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+    }
 }
 
 .card {
     border: 0;
-    background-color: #ffffffe0;
+    background-color: #eeeeeee0;
 }
