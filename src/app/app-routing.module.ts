@@ -8,16 +8,21 @@ import { WaiterComponent } from './pages/waiter/waiter.component';
 import { ChefComponent } from './pages/chef/chef.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UserComponent } from './pages/user/user.component';
+import { AdminGuard } from './services/guards/admin/admin.guard';
+import { EmpleadoGuard } from './services/guards/empleado/empleado.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './services/guards/auth.guard';
+import { ClienteGuard } from './services/guards/cliente/cliente.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'waiter', component: WaiterComponent },
-  { path: 'kitchen', component: ChefComponent },
-  { path: 'user/:id', component: UserComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [ClienteGuard] },
+  { path: 'waiter', component: WaiterComponent, canActivate: [EmpleadoGuard] },
+  { path: 'kitchen', component: ChefComponent, canActivate: [EmpleadoGuard] },
+  { path: 'user/:id', component: UserComponent, canActivate: [ClienteGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

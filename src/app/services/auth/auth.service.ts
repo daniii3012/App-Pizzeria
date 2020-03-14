@@ -91,13 +91,23 @@ export class AuthService {
   login(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(res => {
+        this.loginRedirectTo();
       }).catch(err => console.log(err.message));
   }
 
   logout() {
     this.afAuth.auth.signOut().then(
+      res => this.router.navigate(['/login'])
     ).catch(err => console.log(err.message));
     localStorage.removeItem('user');
+  }
+
+  getUserRole(userId) {
+    return this.afStore.doc<any>(`usuario/${userId}`).valueChanges();
+  }
+
+  loginRedirectTo(): void {
+    this.router.navigate(['/home']);
   }
 
   get authenticated(): boolean {
