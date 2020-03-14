@@ -29,6 +29,7 @@ import { ChefComponent } from './pages/chef/chef.component';
 import { UserComponent } from './pages/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { NewProductComponent } from './pages/admin/product-dashboard/new-product/new-product.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { RegisterComponent } from './pages/register/register.component';
     ChefComponent,
     UserComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,

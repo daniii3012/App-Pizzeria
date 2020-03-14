@@ -1,1 +1,20 @@
-<p>products works!</p>
+<div class="container">
+    <hr>
+    <div *ngFor="let product of products | async">
+        <div class="row no-gutters">
+            <div class="col-md-2 col-4 p-0 m-0">
+                <img src="{{ product.imagen }}" class="card-img" alt="{{ product.nombre }}">
+            </div>
+            <div class="col-md-10 col-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.nombre }}</h5>
+                    <div class="card-text">
+                        <span>Precio: {{ product.precio }}</span><br>
+                        <span *ngIf="product.stock > 0">Disponible</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
