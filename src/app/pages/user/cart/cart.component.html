@@ -45,6 +45,7 @@
                             <p>{{ cart.t_precio }}</p>
                         </div>
                         <div class="col-3">
+                            <button type="button" *ngIf="cart.n_productos > 0" routerLink="/purchase" class="btn btn-outline-success btn-sm">Continuar</button>
                         </div>
                     </div>
                 </div>

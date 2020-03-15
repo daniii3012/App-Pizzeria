@@ -49,6 +49,21 @@ export class ProductService {
     ));
   }
 
+  getProductById(id: any){
+    return this.db.collection('producto', where => where
+    .where("id_producto", "==", `${id}`)).snapshotChanges().pipe(map(
+      actions => {
+        return actions.map(
+          a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          }
+        )
+      }
+    ));
+  }
+
   getProductsByType(tipo: string){
     return this.db.collection('producto', order => order.orderBy("nombre", "asc")
     .where("tipo", "==", `${tipo}`)).snapshotChanges().pipe(map(
@@ -67,7 +82,7 @@ export class ProductService {
   addProduct(producto: any) {
     //this.productsCollection.add(producto);
     const productRef: AngularFirestoreDocument<any> = this.afStore.doc(`producto/${producto.id_producto}`);
-    this.afStore.doc<any>(`producto/${producto.id_producto}`).valueChanges().subscribe( // llama a la base de datos usuario
+    this.afStore.doc<any>(`producto/${producto.id_producto}`).valueChanges().subscribe( // llama a la base de datos producto
       db => {
         const data: any = {
           id_producto: producto.id_producto,

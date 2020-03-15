@@ -42,7 +42,7 @@ export class CartService {
   addCart(id_cliente: any) {
     //this.cartCollection.add(carrito);
     const productRef: AngularFirestoreDocument<any> = this.afStore.doc(`carrito/${id_cliente}`);
-    this.afStore.doc<any>(`carrito/${id_cliente}`).valueChanges().subscribe( // llama a la base de datos usuario
+    this.afStore.doc<any>(`carrito/${id_cliente}`).valueChanges().subscribe( // llama a la base de datos carrito
       db => {
         const data: any = {
           id_cliente: id_cliente,
@@ -53,7 +53,7 @@ export class CartService {
       }
     );
   }
-
+  
   addCartProduct(producto: any) {
     this.db.collection('carrito').doc(`${producto.id_cliente}`).collection('productos').add(producto);
     this.db.collection('carrito').doc(`${producto.id_cliente}`).update({t_precio: firestore.FieldValue.increment(producto.precio)});
@@ -61,7 +61,7 @@ export class CartService {
   }
 
   updateCart(carrito: any) {
-    this.cartDoc = this.db.doc(`carrito/${carrito.id}`);
+    this.cartDoc = this.db.doc(`carrito/${carrito.id_cliente}`);
     this.cartDoc.update(carrito);
   }
 
@@ -74,5 +74,9 @@ export class CartService {
     this.db.doc(`carrito/${id_cart}/productos/${id_producto}`).delete();
     this.db.collection('carrito').doc(`${id_cart}`).update({t_precio: firestore.FieldValue.increment(-producto.precio)});
     this.db.collection('carrito').doc(`${id_cart}`).update({n_productos: firestore.FieldValue.increment(-1)});
+  }
+
+  deleteCartProducts(id_cart: string, id_producto: string, producto: any) {
+    this.db.doc(`carrito/${id_cart}/productos/${id_producto}`).delete();
   }
 }
