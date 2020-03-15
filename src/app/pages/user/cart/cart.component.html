@@ -9,7 +9,7 @@
                         <div class="col-5 text-left">
                             <h5>Producto(s)</h5>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <h5>Precio</h5>
                         </div>
                         <div class="col-3">
@@ -19,10 +19,10 @@
                         <div class="col-5 text-left">
                             {{ product.nombre }}
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             {{ product.precio | currency:'COP' }}
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-2 text-center">
                             <button type="button" (click)="deleteProduct(cart.id_cliente, product.id, product)" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-minus"></i></button>
                         </div>
                     </div>
@@ -31,9 +31,9 @@
                         <div class="col-5 text-left">
                             <p>Total Productos</p>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-2 text-center">
                             <p>{{ cart.n_productos }}</p>
                         </div>
                     </div>
@@ -41,11 +41,11 @@
                         <div class="col-5 text-left">
                             <p>Precio Total</p>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <p>{{ cart.t_precio | currency:'COP' }}</p>
                         </div>
-                        <div class="col-3">
-                            <button type="button" *ngIf="cart.n_productos > 0" routerLink="/purchase" class="btn btn-outline-success btn-sm">Continuar</button>
+                        <div class="col-2 text-center">
+                            <button type="button" *ngIf="cart.n_productos > 0" routerLink="/purchase" class="btn btn-outline-success btn-sm"><i class="mdi mdi-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,9 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.pedidos = this.homeOrderService.getPedidos();
+    this.auth.afAuth.authState.subscribe(
+      auth => this.pedidos = this.homeOrderService.getPedidoById(auth.uid)
+    )
   }
 
 }

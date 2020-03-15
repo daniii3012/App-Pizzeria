@@ -20,8 +20,9 @@ export class HomeOrderService {
     this.pedidoCollection = this.db.collection('pedido', order => order.orderBy("f_pedido", "desc"));
   }
 
-  getPedidos(){
-    return this.pedidoCollection.snapshotChanges().pipe(map(
+  getPedidoById(id_cliente: string){
+    return this.db.collection('pedido', order => order.orderBy("f_pedido", "desc")
+    .where("id_cliente", "==", `${id_cliente}`)).snapshotChanges().pipe(map(
       actions => {
         return actions.map(
           a => {
