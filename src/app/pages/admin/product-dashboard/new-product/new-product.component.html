@@ -51,5 +51,5 @@
             <input type="number" [(ngModel)]="stock" name="stock" class="form-control" id="inputStock" placeholder="Stock">
         </div>
     </div>
-    <button type="button" (click)="agregarProducto()" class="btn btn-outline-primary mb-2" [disabled]="!id_producto || !nombre || !imagen || !precio || (tipo == Tipo)">Agregar</button>
+    <button type="button" (click)="agregarProducto()" class="btn btn-outline-primary mb-2" [disabled]="!id_producto || !nombre || !imagen || !precio || (tipo == 'Tipo')">Agregar</button>
 </form>
