@@ -25,7 +25,7 @@
         </ul>
         <div *ngIf="auth.afAuth.authState | async as user">
             <a routerLink="/user/{{ user.uid }}" class="text-custom">{{ user.displayName }}</a>
-            <button *ngIf="rol == 'admin' || rol == 'cliente'" class="btn btn-outline-light ml-2" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i><span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span></button>
+            <button class="btn btn-outline-light ml-2" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i><span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span></button>
             <button class="btn btn-outline-light ml-2" type="button" (click)="auth.logout()">Salir</button>
         </div>
     </div>

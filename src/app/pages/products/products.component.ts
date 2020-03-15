@@ -24,13 +24,8 @@ export class ProductsComponent implements OnInit {
     this.products = this.productService.getProducts();
   }
 
-  // Timer
-  resolveAfter2Seconds() {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
+  productsByType(tipo: string){
+    this.products = this.productService.getProductsByType(tipo);
   }
 
   addCart(product: any){
@@ -42,11 +37,7 @@ export class ProductsComponent implements OnInit {
           nombre: product.nombre,
           precio: product.precio
         }
-        //console.log(data_product);
-        this.cartService.addCart(data_product);
-        this.resolveAfter2Seconds().then(value => {
-          this.cartService.addCartProduct(data_product);
-        });        
+        this.cartService.addCartProduct(data_product);       
       }
     )
     this.productService.deleteProductStock(product.id_producto);

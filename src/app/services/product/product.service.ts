@@ -34,6 +34,36 @@ export class ProductService {
     ));
   }
 
+  getHomeProducts(){
+    return this.db.collection('producto', order => order.orderBy("stock", "desc")
+    .limit(5)).snapshotChanges().pipe(map(
+      actions => {
+        return actions.map(
+          a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          }
+        )
+      }
+    ));
+  }
+
+  getProductsByType(tipo: string){
+    return this.db.collection('producto', order => order.orderBy("nombre", "asc")
+    .where("tipo", "==", `${tipo}`)).snapshotChanges().pipe(map(
+      actions => {
+        return actions.map(
+          a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          }
+        )
+      }
+    ));
+  }
+
   addProduct(producto: any) {
     //this.productsCollection.add(producto);
     const productRef: AngularFirestoreDocument<any> = this.afStore.doc(`producto/${producto.id_producto}`);

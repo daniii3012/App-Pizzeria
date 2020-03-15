@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { CartService } from '../cart/cart.service';
 
 
 @Injectable({
@@ -18,7 +19,8 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     private afStore: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {
 
     this.afAuth.authState.subscribe(
@@ -57,6 +59,7 @@ export class AuthService {
           displayName: alias
         })
         this.addUserDb(res.user, userID, nombre, apellido, alias, telefono, direccion, rol);
+        this.cartService.addCart(res.user.uid);
       }).catch(err => console.log(err.message));
   }
 

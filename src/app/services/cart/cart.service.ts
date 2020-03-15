@@ -39,13 +39,15 @@ export class CartService {
     ))
   }
 
-  addCart(carrito: any) {
+  addCart(id_cliente: any) {
     //this.cartCollection.add(carrito);
-    const productRef: AngularFirestoreDocument<any> = this.afStore.doc(`carrito/${carrito.id_cliente}`);
-    this.afStore.doc<any>(`carrito/${carrito.id_cliente}`).valueChanges().subscribe( // llama a la base de datos usuario
+    const productRef: AngularFirestoreDocument<any> = this.afStore.doc(`carrito/${id_cliente}`);
+    this.afStore.doc<any>(`carrito/${id_cliente}`).valueChanges().subscribe( // llama a la base de datos usuario
       db => {
         const data: any = {
-          id_cliente: carrito.id_cliente
+          id_cliente: id_cliente,
+          t_precio: 0,
+          n_productos: 0
         }
         return productRef.set(data, { merge: true })
       }
