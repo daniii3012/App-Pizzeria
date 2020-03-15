@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeOrderService } from 'src/app/services/home-order/home-order.service';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-home-order',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeOrderComponent implements OnInit {
 
-  constructor() { }
+  pedidos: Observable<any[]>
+
+  constructor(
+    private homeOrderService: HomeOrderService,
+    public auth: AuthService
+    ) { }
 
   ngOnInit() {
+    this.pedidos = this.homeOrderService.getPedidosPendientes();
+  }
+
+  terminarPedido(pedido: any){
+    const data = {
+      id: pedido.id,
+      estado: !pedido.estado
+    }
+    this.homeOrderService.updatePedido(data);
   }
 
 }

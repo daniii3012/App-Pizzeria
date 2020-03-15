@@ -1,1 +1,21 @@
-<p>home-order works!</p>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Domicilios Pendientes</h5>
+            <hr>
+            <div class="card-text">
+                <div *ngFor="let pedido of pedidos | async" class="card-text">
+                    <div><b>Pedido #{{ pedido.id }}</b></div>
+                    <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+                    <div *ngIf="!pedido.estado" class="text-warning">Pedido Aceptado</div>
+                    <div *ngIf="pedido.estado" class="text-success">Pedido Recibido</div>
+                    <div>Direccion de Envio: {{ pedido.dirEnvio }}</div>
+                    <div>Número de Productos: {{ pedido.n_productos }}</div>
+                    <div>Precio Total: {{ pedido.precioPedido | currency:'COP' }}</div>
+                    <button type="button" (click)="terminarPedido(pedido)" class="btn btn-outline-info">Terminar Pedido</button>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
