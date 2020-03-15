@@ -11,6 +11,7 @@ import { CartService } from '../../../services/cart/cart.service';
 })
 export class ProductsComponent implements OnInit {
 
+  filterProduct = '';
   products: Observable<any[]>;
   stock: boolean;
 
