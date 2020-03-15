@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       }
     )
 
-    if (window.matchMedia('(display-mode: fullscreen)').matches || window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: minimal-ui)').matches) {
+    if (window.matchMedia('(display-mode: standalone)').matches) {
       this.installed = true;
     }
   }
