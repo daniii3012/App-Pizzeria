@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/home/products/products.component';
+import { ProductsComponent } from './pages/products/products.component';
 import { CartComponent } from './pages/user/cart/cart.component';
 import { WaiterComponent } from './pages/waiter/waiter.component';
 import { ChefComponent } from './pages/chef/chef.component';

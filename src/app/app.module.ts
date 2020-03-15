@@ -14,7 +14,7 @@ import { AuthService } from './services/auth/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ProductsComponent } from './pages/home/products/products.component';
+import { ProductsComponent } from './pages/products/products.component';
 import { ShoppingHistoryComponent } from './pages/user/shopping-history/shopping-history.component';
 import { PurchaseComponent } from './pages/user/purchase/purchase.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -31,6 +31,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NewProductComponent } from './pages/admin/product-dashboard/new-product/new-product.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { HomeProductsComponent } from './pages/home/home-products/home-products.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     UserComponent,
     LoginComponent,
     RegisterComponent,
-    NewProductComponent
+    NewProductComponent,
+    HomeProductsComponent
   ],
   imports: [
     BrowserModule,

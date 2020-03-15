@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ProductService } from '../../../services/product/product.service';
+import { ProductService } from 'src/app/services/product/product.service';
+import { CartService } from 'src/app/services/cart/cart.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { CartService } from '../../../services/cart/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +11,6 @@ import { CartService } from '../../../services/cart/cart.service';
 })
 export class ProductsComponent implements OnInit {
 
-  filterProduct = '';
   products: Observable<any[]>;
   stock: boolean;
 
