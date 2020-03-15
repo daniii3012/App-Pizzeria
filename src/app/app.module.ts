@@ -31,6 +31,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { NewProductComponent } from './pages/admin/product-dashboard/new-product/new-product.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     UserComponent,
     LoginComponent,
     RegisterComponent,
-    NewProductComponent
+    NewProductComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,18 @@
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="mdi mdi-text"></i></div>
             </div>
+            <select [(ngModel)]="tipo" name="tipo" class="browser-default custom-select">
+                <option class="tipo" value="Tipo" disabled selected>Tipo</option>
+                <option class="tipo" value="Pizza">Pizza</option>
+                <option class="tipo" value="Bebida">Bebida</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+            </div>
             <input type="text" [(ngModel)]="imagen" name="imagen" class="form-control" id="inputImagen" placeholder="Imagen del producto">
         </div>
     </div>
@@ -39,5 +51,5 @@
             <input type="number" [(ngModel)]="stock" name="stock" class="form-control" id="inputStock" placeholder="Stock">
         </div>
     </div>
-    <button type="button" (click)="agregarProducto()" class="btn btn-outline-primary mb-2" [disabled]="!id_producto || !nombre || !imagen || !precio">Agregar</button>
+    <button type="button" (click)="agregarProducto()" class="btn btn-outline-primary mb-2" [disabled]="!id_producto || !nombre || !imagen || !precio || (tipo == Tipo)">Agregar</button>
 </form>

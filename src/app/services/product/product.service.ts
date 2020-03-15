@@ -42,6 +42,7 @@ export class ProductService {
         const data: any = {
           id_producto: producto.id_producto,
           nombre: producto.nombre,
+          tipo: producto.tipo,
           imagen: producto.imagen,
           precio: producto.precio,
           stock: producto.stock

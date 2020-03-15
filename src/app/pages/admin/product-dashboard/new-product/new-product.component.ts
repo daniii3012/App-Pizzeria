@@ -10,6 +10,7 @@ export class NewProductComponent implements OnInit {
 
   id_producto: string;
   nombre: string;
+  tipo: string;
   imagen: string;
   precio: number;
   stock: number;
@@ -23,6 +24,7 @@ export class NewProductComponent implements OnInit {
     const data = {
       id_producto: this.id_producto,
       nombre: this.nombre,
+      tipo: this.tipo,
       imagen: this.imagen,
       precio: this.precio,
       stock: this.stock
@@ -30,6 +32,7 @@ export class NewProductComponent implements OnInit {
     this.productService.addProduct(data);
     this.id_producto = '';
     this.nombre = '';
+    this.tipo = ';'
     this.imagen = '';
     this.precio = null;
     this.stock = null;
