@@ -52,6 +52,7 @@ export class PurchaseComponent implements OnInit {
             this.dirEnvio = userAdress.direccion;
             const data = {
               id_cliente: auth.uid,
+              cliente: auth.displayName,
               n_productos: this.cart.n_productos,
               precioPedido: this.cart.t_precio,
               metodoPago: this.payment_method,
