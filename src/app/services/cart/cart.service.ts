@@ -76,7 +76,7 @@ export class CartService {
     this.db.collection('carrito').doc(`${id_cart}`).update({n_productos: firestore.FieldValue.increment(-1)});
   }
 
-  deleteCartProducts(id_cart: string, id_producto: string, producto: any) {
+  deleteCartProducts(id_cart: string, id_producto: string) {
     this.db.doc(`carrito/${id_cart}/productos/${id_producto}`).delete();
   }
 }

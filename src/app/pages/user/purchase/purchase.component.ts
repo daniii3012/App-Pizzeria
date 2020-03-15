@@ -14,7 +14,8 @@ export class PurchaseComponent implements OnInit {
 
   cart: any;
   products: Observable<any[]>;
-  productos: any;
+
+  precio: number;
 
   //id_pedido: string;
   id_cliente: string = null;
@@ -49,28 +50,21 @@ export class PurchaseComponent implements OnInit {
         this.auth.getUserRole(auth.uid).subscribe(
           userAdress => {
             this.dirEnvio = userAdress.direccion;
-            this.cartService.getCartProducts(auth.uid).subscribe(
-              data_products => {
-                const data = {
-                  id_cliente: auth.uid,
-                  productos: data_products,
-                  precioPedido: this.cart.t_precio,
-                  metodoPago: this.payment_method,
-                  dirEnvio: this.dirEnvio,
-                  f_pedido: f_pedido,
-                  estado: this.estado
-                }
-                this.productos = data;
-                //this.homeOrderService.addPedido(data);
-              }
-            );
-            console.log(this.productos)
-
-            /*
+            const data = {
+              id_cliente: auth.uid,
+              n_productos: this.cart.n_productos,
+              precioPedido: this.cart.t_precio,
+              metodoPago: this.payment_method,
+              dirEnvio: this.dirEnvio,
+              f_pedido: f_pedido,
+              estado: this.estado
+            }
+            this.homeOrderService.addPedido(data);
+            
             this.cartService.getCartProducts(auth.uid).subscribe(
               data_products => {
                 for (let i in data_products) {
-                  this.cartService.deleteCartProducts(data_products[i].id_cliente, data_products[i].id, data_products);
+                  this.cartService.deleteCartProducts(data_products[i].id_cliente, data_products[i].id);
                 }
 
                 const data_cart = {
@@ -83,10 +77,8 @@ export class PurchaseComponent implements OnInit {
                 this.router.navigate(['/home']);
               }
             );
-            */
           }
         );
-
       }
     )
 
