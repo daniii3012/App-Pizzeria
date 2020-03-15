@@ -17,7 +17,7 @@ export class HomeOrderService {
     private db: AngularFirestore,
     private afStore: AngularFirestore
     ) {
-    this.pedidoCollection = this.db.collection('pedido');
+    this.pedidoCollection = this.db.collection('pedido', order => order.orderBy("f_pedido", "desc"));
   }
 
   getPedidos(){

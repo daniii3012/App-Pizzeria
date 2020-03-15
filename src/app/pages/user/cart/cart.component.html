@@ -20,7 +20,7 @@
                             {{ product.nombre }}
                         </div>
                         <div class="col-3 text-center">
-                            {{ product.precio }}
+                            {{ product.precio | currency:'COP' }}
                         </div>
                         <div class="col-3 text-center">
                             <button type="button" (click)="deleteProduct(cart.id_cliente, product.id, product)" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-minus"></i></button>
@@ -42,7 +42,7 @@
                             <p>Precio Total</p>
                         </div>
                         <div class="col-3 text-center">
-                            <p>{{ cart.t_precio }}</p>
+                            <p>{{ cart.t_precio | currency:'COP' }}</p>
                         </div>
                         <div class="col-3">
                             <button type="button" *ngIf="cart.n_productos > 0" routerLink="/purchase" class="btn btn-outline-success btn-sm">Continuar</button>
