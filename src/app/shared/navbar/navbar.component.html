@@ -20,6 +20,9 @@
                 <a *ngIf="rol == 'admin' || rol == 'empleado'" class="nav-link" routerLink="/kitchen">Cocinero</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
+                <a *ngIf="rol == 'admin' || rol == 'empleado'" class="nav-link" routerLink="/home-order">Domicilios</a>
+            </li>
+            <li routerLinkActive="active" class="nav-item">
                 <a *ngIf="rol == 'admin'" class="nav-link" routerLink="/admin">Admin</a>
             </li>
         </ul>

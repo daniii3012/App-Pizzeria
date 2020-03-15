@@ -17,6 +17,7 @@ import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashbo
 import { ProductDashboardComponent } from './pages/admin/product-dashboard/product-dashboard.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { PurchaseComponent } from './pages/user/purchase/purchase.component';
+import { HomeOrderComponent } from './pages/home-order/home-order.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'purchase', component: PurchaseComponent, canActivate: [ClienteGuard] },
   { path: 'waiter', component: WaiterComponent, canActivate: [EmpleadoGuard] },
   { path: 'kitchen', component: ChefComponent, canActivate: [EmpleadoGuard] },
+  { path: 'home-order', component: HomeOrderComponent, canActivate: [EmpleadoGuard] },
   { path: 'user/:id', component: UserComponent, canActivate: [ClienteGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AdminGuard] },
