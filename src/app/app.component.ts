@@ -10,4 +10,5 @@ export class AppComponent {
   title = 'app-pizzeria';
 
   constructor(public auth: AuthService) {}
+  
 }

@@ -49,8 +49,7 @@ export class ProductsComponent implements OnInit {
         });        
       }
     )
-    
-    
+    this.productService.deleteProductStock(product.id_producto);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,6 +16,7 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
+    private productService: ProductService,
     public auth: AuthService
     ) { }
 
@@ -32,6 +34,7 @@ export class CartComponent implements OnInit {
 
   deleteProduct(id_cart: string, id_producto: string, producto: any) {
     this.cartService.deleteCartProduct(id_cart, id_producto, producto);
+    this.productService.addProductStock(producto.id_product);
   }
 
 }

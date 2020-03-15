@@ -25,15 +25,14 @@
     background: #f83a3a;
 }
 
-
-/*
 a {
-    color: #dadada;
     text-decoration: none;
 }
 
 .active a {
-    color: #ffffff;
     text-decoration: none;
 }
-*/
+
+.text-custom {
+    color: #ffffff;
+}

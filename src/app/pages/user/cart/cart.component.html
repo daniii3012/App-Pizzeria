@@ -1,7 +1,54 @@
-<div *ngIf="cart">
-    {{ cart.id_cliente }}<br> {{ cart.t_precio }}<br> {{ cart.n_productos }}
-    <div *ngFor="let product of products | async">
-        {{ product.nombre }}
-        <button type="button" (click)="deleteProduct(cart.id_cliente, product.id, product)" class="btn btn-outline-danger btn-sm">Remove</button>
+<div *ngIf="cart" class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-2"><i class="mdi mdi-cart mr-2"></i>Carrito de Compras</h4>
+                    <hr>
+                    <div class="card-text row mb-1">
+                        <div class="col-5 text-left">
+                            <h5>Producto(s)</h5>
+                        </div>
+                        <div class="col-3 text-center">
+                            <h5>Precio</h5>
+                        </div>
+                        <div class="col-3">
+                        </div>
+                    </div>
+                    <div *ngFor="let product of products | async" class="card-text row mb-1">
+                        <div class="col-5 text-left">
+                            {{ product.nombre }}
+                        </div>
+                        <div class="col-3 text-center">
+                            {{ product.precio }}
+                        </div>
+                        <div class="col-3 text-center">
+                            <button type="button" (click)="deleteProduct(cart.id_cliente, product.id, product)" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-minus"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-text row mb-1">
+                        <div class="col-5 text-left">
+                            <p>Total Productos</p>
+                        </div>
+                        <div class="col-3 text-center">
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>{{ cart.n_productos }}</p>
+                        </div>
+                    </div>
+                    <div class="card-text row mb-1">
+                        <div class="col-5 text-left">
+                            <p>Precio Total</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>{{ cart.t_precio }}</p>
+                        </div>
+                        <div class="col-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -17,7 +17,7 @@ export class CartService {
     private db: AngularFirestore,
     private afStore: AngularFirestore
     ) {
-    this.cartCollection = this.db.collection('carrito');
+    this.cartCollection = this.db.collection('carrito', order => order.orderBy("nombre", "asc"));
   }
 
   getCart(id_cliente: string){
@@ -26,7 +26,7 @@ export class CartService {
   }
 
   getCartProducts(id_cliente: string){
-    return this.db.collection('carrito').doc(`${id_cliente}`).collection('productos').snapshotChanges().pipe(map(
+    return this.db.collection('carrito').doc(`${id_cliente}`).collection('productos', order => order.orderBy("nombre", "asc")).snapshotChanges().pipe(map(
       actions => {
         return actions.map(
           a => {
