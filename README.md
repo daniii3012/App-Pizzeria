@@ -1,4 +1,23 @@
 # PizzApp
+## Instrucciones de uso
+El proyecto esta realizado en *Angular*. La base de datos esta implementada en *Firestore de Firebase*
+### NodeJS
+Para instalar *Angular* es necesario tener *NodeJS*.
+Se puede descargar *NodeJS* desde su página princial https://nodejs.org/es/
+### Angular
+Para desplegar la pagina web es necesario instalar el CLI de Angular *(Angular CLI)*, esto se hara por medio de *NodeJS* mediante la consola de comandos  
+npm install -g @angular/cli  
+### Inicializacion del proyecto  
+Luego de clonar el repositorio se iniciara el proyecto de angular, se dirigira a la carpeta donde clono el repo, allí mediante la consola de comandos ejecutara:  
+npm install   
+
+Para inicializar el proyecto:  
+ng serve  
+
+Ahora podra ver la página web en http://localhost:4200/  
+
+
+# PizzApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
