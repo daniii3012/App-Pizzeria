@@ -1,1 +1,10 @@
-<p>user works!</p>
+<div *ngIf="auth.afAuth.authState | async as user" class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5>Bienvenido {{ user.displayName }}</h5>
+            <p>Puedes ver tu historial de pedidos a continuación</p>
+            <hr>
+            <app-shopping-history></app-shopping-history>
+        </div>
+    </div>
+</div>
