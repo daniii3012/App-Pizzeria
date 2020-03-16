@@ -25,9 +25,11 @@
             <li routerLinkActive="active" class="nav-item">
                 <a *ngIf="rol == 'admin'" class="nav-link" routerLink="/admin">Admin</a>
             </li>
+            <li routerLinkActive="active" class="nav-item">
+                <a *ngIf="auth.afAuth.authState | async as user" class="nav-link" routerLink="/user/{{ user.uid }}">Mi Cuenta</a>
+            </li>
         </ul>
         <div *ngIf="auth.afAuth.authState | async as user">
-            <a routerLink="/user/{{ user.uid }}" class="text-custom">{{ user.displayName }}</a>
             <button class="btn btn-outline-light ml-2" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i><span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span></button>
             <button class="btn btn-outline-light ml-2" type="button" (click)="auth.logout()">Salir</button>
         </div>
