@@ -6,13 +6,13 @@
             <div class="card-text">
                 <div *ngFor="let pedido of pedidos | async" class="card-text">
                     <div><b>Pedido #{{ pedido.id }}</b></div>
+                    <div class="text-info">Pedido Aceptado</div>
                     <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
-                    <div class="text-warning">Pedido Aceptado</div>
                     <div><b>Cliente:</b> {{ pedido.cliente }}</div>
                     <div>Direccion de Envio: {{ pedido.dirEnvio }}</div>
                     <div>Número de Productos: {{ pedido.n_productos }}</div>
                     <div><b>Precio Total:</b> {{ pedido.precioPedido | currency:'COP' }}</div>
-                    <button type="button" (click)="terminarPedido(pedido)" class="btn btn-outline-info">Terminar Pedido</button>
+                    <button type="button" (click)="terminarPedido(pedido)" class="btn btn-outline-info btn-sm">Terminar Pedido</button>
                     <hr>
                 </div>
             </div>

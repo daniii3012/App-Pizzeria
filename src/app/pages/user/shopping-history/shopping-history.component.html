@@ -2,12 +2,12 @@
     <div *ngIf="!pedido.estado"><b>Pedido #{{ pedido.id }}</b>
         <span class="badge badge-warning ml-2">Pendiente</span>
     </div>
-    <div *ngIf="pedido.estado"><b>Pedido</b> #{{ pedido.id }}</div>
-    <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
-    <div *ngIf="!pedido.estado" class="text-warning">Pedido Aceptado</div>
+    <div *ngIf="pedido.estado">Pedido #{{ pedido.id }}</div>
+    <div *ngIf="!pedido.estado" class="text-info">Pedido Aceptado</div>
     <div *ngIf="pedido.estado" class="text-success">Pedido Entregado</div>
-    <div>Direccion de Envio: {{ pedido.dirEnvio }}</div>
-    <div>Número de Productos: {{ pedido.n_productos }}</div>
+    <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+    <div *ngIf="!pedido.estado">Direccion de Envio: {{ pedido.dirEnvio }}</div>
+    <div *ngIf="!pedido.estado">Número de Productos: {{ pedido.n_productos }}</div>
     <div>Precio Total: {{ pedido.precioPedido | currency:'COP' }}</div>
     <hr>
 </div>
