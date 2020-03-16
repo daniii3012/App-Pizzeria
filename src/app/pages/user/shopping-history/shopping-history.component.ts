@@ -19,7 +19,9 @@ export class ShoppingHistoryComponent implements OnInit {
 
   ngOnInit() {
     this.auth.afAuth.authState.subscribe(
-      auth => this.pedidos = this.homeOrderService.getPedidoById(auth.uid)
+      auth => {
+        this.pedidos = this.homeOrderService.getPedidoById(auth.uid)
+      }
     )
   }
 

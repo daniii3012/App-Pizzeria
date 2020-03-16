@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <div *ngIf="cart && cart.n_productos > 0 else showOther">
+    <div *ngIf="cart && cart.n_productos > 0">
         <div class="row justify-content-center">
             <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
                 <div class="card">
@@ -9,7 +9,7 @@
                         <div class="card-text">
                             <div><b>Producto(s)</b></div>
                             <div *ngFor="let product of products | async" class="row">
-                                <div class="col-5 text-left">
+                                <div class="col-6 text-left">
                                     {{ product.nombre }}
                                 </div>
                                 <div class="col-5 text-right">
@@ -18,7 +18,7 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-5 text-left">
+                                <div class="col-6 text-left">
                                     <b>Precio de la Compra:</b>
                                 </div>
                                 <div class="col-5 text-right">
@@ -27,35 +27,42 @@
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-5 text-left">
+                                <div class="col-6 text-left">
                                     <b>Metodo de Pago:</b>
                                 </div>
                                 <div class="col-5 text-right">
                                     <select [(ngModel)]="payment_method" name="payment_method" class="browser-default custom-select mb-2">
-                                                <option class="payment_method" value="Metodo de Pago" disabled selected>Metodo de Pago</option>
-                                                <option class="payment_method" value="Efectivo">Efectivo</option>
-                                                <option class="payment_method" value="Tarjeta de Credito" disabled>Tarjeta de Credito</option>
-                                            </select>
+                                        <option class="payment_method" value="Metodo de Pago" disabled selected>Metodo de Pago</option>
+                                        <option class="payment_method" value="Efectivo">Efectivo</option>
+                                        <option class="payment_method" value="Tarjeta de Credito" disabled>Tarjeta de Credito</option>
+                                    </select>
                                 </div>
                             </div>
                             <br>
-                            <button type="button" (click)="comprar()" [disabled]="(payment_method == 'Metodo de Pago')" class="btn btn-outline-success">Comprar</button>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <button type="button" (click)="comprar()" [disabled]="(payment_method == 'Metodo de Pago') || compraEnProceso" class="btn btn-outline-success">Comprar</button>
+                                </div>
+                                <div class="col text-right">
+                                    <button type="button" (click)="volver()" class="btn btn-outline-danger">Volver</button>
+                                </div>
+                            </div>
+
+
+                            <hr>
+
+                            <div *ngIf="compraEnProceso">
+                                <h5 *ngIf="auth.afAuth.authState | async as user" class="card-text text-center">
+                                    Procesando Compra
+                                    <div class="spinner-grow text-dark ml-2" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <ng-template #showOther>
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h5 *ngIf="auth.afAuth.authState | async as user" class="card-title">Gracias por tu compra! {{ user.displayName }}</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ng-template>
 </div>

@@ -18,6 +18,7 @@ import { ProductDashboardComponent } from './pages/admin/product-dashboard/produ
 import { RegisterComponent } from './pages/register/register.component';
 import { PurchaseComponent } from './pages/user/purchase/purchase.component';
 import { HomeOrderComponent } from './pages/home-order/home-order.component';
+import { PurchaseCompleteComponent } from './pages/user/purchase/purchase-complete/purchase-complete.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent, canActivate: [ClienteGuard] },
   { path: 'purchase', component: PurchaseComponent, canActivate: [ClienteGuard] },
+  { path: 'purchase-complete', component: PurchaseCompleteComponent, canActivate: [ClienteGuard] },
   { path: 'waiter', component: WaiterComponent, canActivate: [EmpleadoGuard] },
   { path: 'kitchen', component: ChefComponent, canActivate: [EmpleadoGuard] },
   { path: 'home-order', component: HomeOrderComponent, canActivate: [EmpleadoGuard] },

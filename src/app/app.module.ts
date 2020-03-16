@@ -33,6 +33,7 @@ import { NewProductComponent } from './pages/admin/product-dashboard/new-product
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { HomeProductsComponent } from './pages/home/home-products/home-products.component';
 import { HomeOrderComponent } from './pages/home-order/home-order.component';
+import { PurchaseCompleteComponent } from './pages/user/purchase/purchase-complete/purchase-complete.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { HomeOrderComponent } from './pages/home-order/home-order.component';
     RegisterComponent,
     NewProductComponent,
     HomeProductsComponent,
-    HomeOrderComponent
+    HomeOrderComponent,
+    PurchaseCompleteComponent
   ],
   imports: [
     BrowserModule,

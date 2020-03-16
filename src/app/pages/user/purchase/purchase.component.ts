@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Observable } from 'rxjs';
@@ -10,7 +10,11 @@ import { Router } from '@angular/router';
   templateUrl: './purchase.component.html',
   styleUrls: ['./purchase.component.css']
 })
-export class PurchaseComponent implements OnInit {
+export class PurchaseComponent implements OnInit, OnDestroy {
+
+  susbscription: any;
+
+  compraEnProceso: boolean;
 
   cart: any;
   products: Observable<any[]>;
@@ -42,9 +46,13 @@ export class PurchaseComponent implements OnInit {
       }
     )
 
+    this.compraEnProceso = false;
+    this.susbscription = null;
+
   }
 
   comprar() {
+    this.compraEnProceso = true;
 
     var f_pedido = new Date();
 
@@ -52,19 +60,30 @@ export class PurchaseComponent implements OnInit {
       auth => {
         this.auth.getUserRole(auth.uid).subscribe(
           userAdress => {
-            this.dirEnvio = userAdress.direccion;
-            const data = {
-              id_cliente: auth.uid,
-              cliente: auth.displayName,
-              n_productos: this.cart.n_productos,
-              precioPedido: this.cart.t_precio,
-              metodoPago: this.payment_method,
-              dirEnvio: this.dirEnvio,
-              f_pedido: f_pedido,
-              estado: this.estado
-            }
-            this.homeOrderService.addPedido(data);
-            
+
+            this.susbscription = this.cartService.getCartProducts(auth.uid).subscribe(
+              data_products => {
+
+                this.dirEnvio = userAdress.direccion;
+                const data = {
+                  id_cliente: auth.uid,
+                  cliente: auth.displayName,
+                  n_productos: this.cart.n_productos,
+                  productos: data_products,
+                  precioPedido: this.cart.t_precio,
+                  metodoPago: this.payment_method,
+                  dirEnvio: this.dirEnvio,
+                  f_pedido: f_pedido,
+                  estado: this.estado
+                }
+                this.homeOrderService.addPedido(data);
+
+              }
+            )
+
+            setTimeout(() => (this.router.navigate(['/purchase-complete/'])), 3000);
+
+            /*
             this.cartService.getCartProducts(auth.uid).subscribe(
               data_products => {
                 for (let i in data_products) {
@@ -78,14 +97,25 @@ export class PurchaseComponent implements OnInit {
                 }
 
                 this.cartService.updateCart(data_cart);
-                setTimeout(() => (this.router.navigate(['/user/', auth.uid])), 3000)
+                setTimeout(() => (this.router.navigate(['/user/', auth.uid])), 3000);
               }
             );
+            */
           }
         );
       }
     )
+  }
 
+  volver() {
+    this.susbscription = null;
+    this.router.navigate(['/cart'])
+  }
+
+  ngOnDestroy() {
+    if (this.susbscription != null) {
+      this.susbscription.unsubscribe();
+    }
   }
 
 }

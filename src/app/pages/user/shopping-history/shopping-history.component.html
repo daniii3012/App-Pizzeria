@@ -1,13 +1,54 @@
 <div *ngFor="let pedido of pedidos | async" class="card-text">
-    <div *ngIf="!pedido.estado"><b>Pedido #{{ pedido.id }}</b>
-        <span class="badge badge-warning ml-2">Pendiente</span>
+    <div *ngIf="!pedido.estado">
+        <div class="row">
+            <div class="col-auto">
+                <div><b>Pedido #{{ pedido.id }}</b></div>
+            </div>
+            <div class="col text-right">
+                <a class="btn btn-outline-success btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedido.id }}" role="button" aria-expanded="false">
+                    <i class="mdi mdi-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="collapse" id="Pedido{{ pedido.id }}">
+            <div class="text-info">Pedido Aceptado</div>
+            <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+            <div>Direccion de Envio: {{ pedido.dirEnvio }}</div>
+            <div>Número de Productos: {{ pedido.n_productos }}</div>
+            <div>Productos:
+                <div *ngFor="let producto of pedido.productos" class="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="col-7">{{ producto.nombre }}</div>
+                    <div class="col-auto text-left">{{ producto.precio | currency:'COP' }}</div>
+                </div>
+            </div>
+            <div>Precio Total: {{ pedido.precioPedido | currency:'COP' }}</div>
+        </div>
     </div>
-    <div *ngIf="pedido.estado">Pedido #{{ pedido.id }}</div>
-    <div *ngIf="!pedido.estado" class="text-info">Pedido Aceptado</div>
-    <div *ngIf="pedido.estado" class="text-success">Pedido Entregado</div>
-    <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
-    <div *ngIf="!pedido.estado">Direccion de Envio: {{ pedido.dirEnvio }}</div>
-    <div *ngIf="!pedido.estado">Número de Productos: {{ pedido.n_productos }}</div>
-    <div>Precio Total: {{ pedido.precioPedido | currency:'COP' }}</div>
+
+    <div *ngIf="pedido.estado">
+        <div class="row">
+            <div class="col-auto">
+                <div>Pedido #{{ pedido.id }}</div>
+            </div>
+            <div class="col text-right">
+                <a class="btn btn-outline-info btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedido.id }}" role="button" aria-expanded="false">
+                    <i class="mdi mdi-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="collapse" id="Pedido{{ pedido.id }}">
+            <div class="text-success">Pedido Entregado</div>
+            <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+            <div>Productos:
+                <div *ngFor="let producto of pedido.productos" class="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="col-7">{{ producto.nombre }}</div>
+                    <div class="col-auto text-left">{{ producto.precio | currency:'COP' }}</div>
+                </div>
+            </div>
+            <div>Precio Total: {{ pedido.precioPedido | currency:'COP' }}</div>
+        </div>
+    </div>
     <hr>
 </div>

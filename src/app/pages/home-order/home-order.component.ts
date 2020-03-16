@@ -21,7 +21,7 @@ export class HomeOrderComponent implements OnInit {
     this.pedidos = this.homeOrderService.getPedidosPendientes();
   }
 
-  terminarPedido(pedido: any){
+  entregarPedido(pedido: any){
     const data = {
       id: pedido.id,
       estado: !pedido.estado

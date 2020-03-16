@@ -7,8 +7,10 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app-pizzeria';
+  title = 'AppPizzeria';
+  route: string;
 
-  constructor(public auth: AuthService) {}
-  
+  constructor(
+    public auth: AuthService
+  ) { }
 }
