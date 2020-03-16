@@ -1,31 +1,23 @@
-# AppPizzeria
+# PizzApp
 ## Instrucciones de uso
 El proyecto esta realizado en *Angular*. La base de datos esta implementada en *Firestore de Firebase*
 ### NodeJS
-Para instalar *Angular* es necesario tener *NodeJS*
+Para instalar *Angular* es necesario tener *NodeJS*.
 Se puede descargar *NodeJS* desde su página princial https://nodejs.org/es/
 ### Angular
 Para desplegar la pagina web es necesario instalar el CLI de Angular *(Angular CLI)*, esto se hara por medio de *NodeJS* mediante la consola de comandos  
-npm install -g @angular/cli 
+npm install -g @angular/cli  
 ### Inicializacion del proyecto  
 Luego de clonar el repositorio se iniciara el proyecto de angular, se dirigira a la carpeta donde clono el repo, allí mediante la consola de comandos ejecutara:  
-npm install  
+npm install   
 
-*Firebase*  
-Antes de ejecutar el proyecto es necesario instalar Firebase en Angular, para ello ejecutar en consola:  
-npm install firebase @angular/fire --save
-  
 Para inicializar el proyecto:  
 ng serve  
-  
+
 Ahora podra ver la página web en http://localhost:4200/  
 
-# AppPizzeria
-https://app-pizzeria.web.app/  
-Email de prueba: test@email.com  
-Contraseña: 123test  
 
-# AppPizzeria
+# PizzApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
 
