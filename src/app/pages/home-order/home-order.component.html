@@ -8,10 +8,10 @@
                     <div><b>Pedido #{{ pedido.id }}</b></div>
                     <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
                     <div class="text-warning">Pedido Aceptado</div>
-                    <div>Cliente: {{ pedido.cliente }}</div>
+                    <div><b>Cliente:</b> {{ pedido.cliente }}</div>
                     <div>Direccion de Envio: {{ pedido.dirEnvio }}</div>
                     <div>Número de Productos: {{ pedido.n_productos }}</div>
-                    <div>Precio Total: {{ pedido.precioPedido | currency:'COP' }}</div>
+                    <div><b>Precio Total:</b> {{ pedido.precioPedido | currency:'COP' }}</div>
                     <button type="button" (click)="terminarPedido(pedido)" class="btn btn-outline-info">Terminar Pedido</button>
                     <hr>
                 </div>

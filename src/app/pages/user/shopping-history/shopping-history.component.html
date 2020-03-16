@@ -1,5 +1,8 @@
 <div *ngFor="let pedido of pedidos | async" class="card-text">
-    <div><b>Pedido #{{ pedido.id }}</b></div>
+    <div *ngIf="!pedido.estado"><b>Pedido #{{ pedido.id }}</b>
+        <span class="badge badge-warning ml-2">Pendiente</span>
+    </div>
+    <div *ngIf="pedido.estado"><b>Pedido</b> #{{ pedido.id }}</div>
     <div>Fecha del pedido: {{ pedido.f_pedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
     <div *ngIf="!pedido.estado" class="text-warning">Pedido Aceptado</div>
     <div *ngIf="pedido.estado" class="text-success">Pedido Entregado</div>

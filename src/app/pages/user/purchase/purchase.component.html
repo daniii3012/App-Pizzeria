@@ -1,47 +1,61 @@
-<div *ngIf="cart && cart.n_productos > 0" class="container mt-3">
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-2">Compra</h4>
-                    <hr>
-                    <div class="card-text">
-                        <div><b>Producto(s)</b></div>
-                        <div *ngFor="let product of products | async" class="row">
-                            <div class="col-5 text-left">
-                                {{ product.nombre }}
+<div class="container mt-3">
+    <div *ngIf="cart && cart.n_productos > 0 else showOther">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-2">Compra</h4>
+                        <hr>
+                        <div class="card-text">
+                            <div><b>Producto(s)</b></div>
+                            <div *ngFor="let product of products | async" class="row">
+                                <div class="col-5 text-left">
+                                    {{ product.nombre }}
+                                </div>
+                                <div class="col-5 text-right">
+                                    {{ product.precio | currency:'COP' }}
+                                </div>
                             </div>
-                            <div class="col-5 text-right">
-                                {{ product.precio | currency:'COP' }}
+                            <br>
+                            <div class="row">
+                                <div class="col-5 text-left">
+                                    <b>Precio de la Compra:</b>
+                                </div>
+                                <div class="col-5 text-right">
+                                    {{ cart.t_precio | currency:'COP' }}
+                                </div>
                             </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-5 text-left">
+                                    <b>Metodo de Pago:</b>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <select [(ngModel)]="payment_method" name="payment_method" class="browser-default custom-select mb-2">
+                                                <option class="payment_method" value="Metodo de Pago" disabled selected>Metodo de Pago</option>
+                                                <option class="payment_method" value="Efectivo">Efectivo</option>
+                                                <option class="payment_method" value="Tarjeta de Credito" disabled>Tarjeta de Credito</option>
+                                            </select>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="button" (click)="comprar()" [disabled]="(payment_method == 'Metodo de Pago')" class="btn btn-outline-success">Comprar</button>
                         </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-5 text-left">
-                                <b>Precio de la Compra:</b>
-                            </div>
-                            <div class="col-5 text-right">
-                                {{ cart.t_precio | currency:'COP' }}
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-5 text-left">
-                                <b>Metodo de Pago:</b>
-                            </div>
-                            <div class="col-5 text-right">
-                                <select [(ngModel)]="payment_method" name="payment_method" class="browser-default custom-select mb-2">
-                                    <option class="payment_method" value="Metodo de Pago" disabled selected>Metodo de Pago</option>
-                                    <option class="payment_method" value="Efectivo">Efectivo</option>
-                                    <option class="payment_method" value="Tarjeta de Credito" disabled>Tarjeta de Credito</option>
-                                </select>
-                            </div>
-                        </div>
-                        <br>
-                        <button type="button" (click)="comprar()" [disabled]="(payment_method == 'Metodo de Pago')" class="btn btn-outline-success">Comprar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <ng-template #showOther>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 *ngIf="auth.afAuth.authState | async as user" class="card-title">Gracias por tu compra! {{ user.displayName }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
 </div>

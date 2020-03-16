@@ -41,10 +41,13 @@ export class PurchaseComponent implements OnInit {
         this.products = this.cartService.getCartProducts(auth.uid);
       }
     )
+
   }
 
   comprar() {
+
     var f_pedido = new Date();
+
     this.auth.afAuth.authState.subscribe(
       auth => {
         this.auth.getUserRole(auth.uid).subscribe(
@@ -75,7 +78,7 @@ export class PurchaseComponent implements OnInit {
                 }
 
                 this.cartService.updateCart(data_cart);
-                this.router.navigate(['/home']);
+                setTimeout(() => (this.router.navigate(['/user/', auth.uid])), 3000)
               }
             );
           }
