@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit {
   rolUsuario: string;
 
   ngOnInit() {
+    this.getUserRole();
+
   }
 
   getUserRole() {

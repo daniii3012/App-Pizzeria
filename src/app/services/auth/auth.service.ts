@@ -115,6 +115,6 @@ export class AuthService {
   logoutRedirectTo(): void {
     this.router.navigate(['/login']);
   }
-
+  
 }
 

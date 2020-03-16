@@ -36,6 +36,9 @@ export class AdminGuard implements CanActivate {
                   }
                 }
               )
+            } else {
+              console.log('Debes iniciar sesión');
+              this.router.navigate(['/login']);
             }
           }
         )
