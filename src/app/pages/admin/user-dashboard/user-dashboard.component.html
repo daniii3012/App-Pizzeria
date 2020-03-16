@@ -1,1 +1,10 @@
-<p>user-dashboard works!</p>
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Lista de Usuarios</h5>
+            <div *ngFor="let user of users | async">
+                {{ user.alias }}
+            </div>
+        </div>
+    </div>
+</div>

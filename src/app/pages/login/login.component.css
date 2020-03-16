@@ -1,0 +1,25 @@
+@media (min-width: 979px) {
+    .full-page {
+        background: url(../../../assets/images/pizza.jpg) no-repeat center center fixed;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 978px) {
+    .full-page {
+        background: url(../../../assets/images/pizza.jpg) no-repeat fixed;
+        background-size: 1200px;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        overflow-y: auto;
+    }
+}
+
+.card {
+    border: 0;
+    background-color: #eeeeeee0;
+}

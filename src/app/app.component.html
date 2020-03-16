@@ -1,7 +1,4 @@
-<app-navbar></app-navbar>
-<div class="text-center m-3">
-    <div class="alert alert-primary" role="alert">
-        Prototipo de interfaz, todas las pestañas se dispondran al mismo tiempo. Cambiara de acuerdo al tipo de usuario (Cliente, empleado o administrador)
-    </div>
+<div *ngIf="auth.afAuth.authState | async as user" style="padding-top: 58px">
+    <app-navbar></app-navbar>
 </div>
 <router-outlet></router-outlet>
