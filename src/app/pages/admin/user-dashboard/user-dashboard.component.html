@@ -1,1 +1,117 @@
-<p>user-dashboard works!</p>
+<div class="container mt-3 mb-3">
+    <!-- Modificar datos del usuario -->
+    <div *ngIf="updateUsuario" class="card">
+        <div class="card-body">
+            <div class="card-text">
+                <h5 class="card-title">Modificar Datos del Usuario</h5>
+                <div class="card-text">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <input type="hidden" [(ngModel)]="updatingUsuario.uid" name="uid" class="form-control" id="inputUid">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <input type="text" [(ngModel)]="updatingUsuario.nombres" name="nombres" class="form-control" id="inputNombres" placeholder="Nombres">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <input type="text" [(ngModel)]="updatingUsuario.apellidos" name="apellidos" class="form-control" id="inputApellidos" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <input type="text" [(ngModel)]="updatingUsuario.nombreUsuario" name="nombreUsuario" class="form-control" id="inputNombreUsuario" placeholder="Nombre de Usuario">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <input type="number" [(ngModel)]="updatingUsuario.userId" name="userId" class="form-control" id="inputUserId" placeholder="ID">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <input type="text" [(ngModel)]="updatingUsuario.direccion" name="direccion" class="form-control" id="inputDireccion" placeholder="Direccion">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <input type="number" [(ngModel)]="updatingUsuario.telefono" name="telefono" class="form-control" id="inputTelefono" placeholder="Telefono">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="mdi mdi-text"></i></div>
+                                </div>
+                                <select [(ngModel)]="updatingUsuario.rol" name="rol" class="browser-default custom-select">
+                                    <option class="rol" value="Rol" disabled selected>Rol</option>
+                                    <option class="rol" value="cliente">Cliente</option>
+                                    <option class="rol" value="empleado">Empleado</option>
+                                    <option class="rol" value="admin">Administrador</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <button type="button" (click)="modificarUsuario(updatingUsuario)" class="btn btn-outline-success btn-sm" [disabled]="!updatingUsuario.nombres || !updatingUsuario.apellidos || !updatingUsuario.nombreUsuario || !updatingUsuario.userId || !updatingUsuario.direccion || !updatingUsuario.telefono || (updatingUsuario.rol == Rol)">Modificar</button>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button" (click)="updateUsuario = !updateUsuario" class="btn btn-outline-danger btn-sm">Cancelar</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h5 class="mt-3">Lista de Usuarios</h5>
+    <!-- Lista de productos -->
+    <div *ngFor="let usuario of usuarios | async" class="card-text">
+        <hr>
+        <div class="row">
+            <div class="col-auto">
+                <div><b>Usuario: {{ usuario.userId }}</b></div>
+            </div>
+            <div class="col text-right">
+                <a class="btn btn-outline-success btn-sm ml-1" data-toggle="collapse" href="#ID{{ usuario.userId }}" role="button" aria-expanded="false">
+                    <i class="mdi mdi-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="collapse" id="ID{{ usuario.userId }}">
+            <div>
+                <div>Nombres: {{ usuario.nombres }}</div>
+                <div>Apellidos: {{ usuario.apellidos }}</div>
+                <div>Nombre de Usuario: {{ usuario.nombreUsuario }}</div>
+                <div>Direccion: {{ usuario.direccion }}</div>
+                <div>Telefono: {{ usuario.telefono }}</div>
+                <div>Rol: {{ usuario.rol }}</div>
+            </div>
+            <button type="button" (click)="update(usuario)" class="btn btn-outline-info btn-sm">Modificar</button>
+        </div>
+    </div>
+</div>
