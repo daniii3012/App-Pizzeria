@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../../services/productos/productos.service';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-product-dashboard',
@@ -22,7 +23,10 @@ export class ProductDashboardComponent implements OnInit {
 
   productos: Observable<any[]>
 
-  constructor(private productosService: ProductosService) { }
+  constructor(
+    private productosService: ProductosService,
+    public auth: AuthService
+    ) { }
 
   ngOnInit() {
     this.productos = this.productosService.getProductos();

@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { User } from 'firebase';
+import { CartService } from '../cart/cart.service';
 
 
 
@@ -19,7 +20,8 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     private afStore: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {
 
     this.afAuth.authState.subscribe(
@@ -59,6 +61,7 @@ export class AuthService {
           displayName: displayName
         })
         this.addUserDb(res.user, userId, nombres, apellidos, displayName, telefono, direccion);
+        this.cartService.addCart(res.user.uid);
       }).catch(err => console.log(err.message));
   }
 

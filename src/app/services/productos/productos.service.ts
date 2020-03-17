@@ -50,7 +50,9 @@ export class ProductosService {
       }
     ));
   }
+  */
 
+  /* Obtiene los productos por tipo para su busqueda */
   getProductosByType(tipo: string){
     return this.db.collection('productos', order => order.orderBy("nombre", "asc")
     .where("tipo", "==", `${tipo}`)).snapshotChanges().pipe(map(
@@ -65,7 +67,6 @@ export class ProductosService {
       }
     ));
   }
-  */
 
   /* Añadir un nuevo producto a la base de datos */
   addProducto(producto: any) {
