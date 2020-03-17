@@ -24,7 +24,7 @@
             </li>
         </ul>
         <div *ngIf="auth.afAuth.authState | async as user">
-            <button class="btn btn-outline-light ml-2" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i></button>
+            <button class="btn btn-outline-light" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i></button>
             <button class="btn btn-outline-light ml-2" type="button" (click)="auth.logout()">Salir</button>
         </div>
     </div>

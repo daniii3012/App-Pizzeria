@@ -23,6 +23,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashboard.component';
+import { ProductDashboardComponent } from './pages/admin/product-dashboard/product-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { CartComponent } from './pages/cart/cart.component';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    CartComponent
+    CartComponent,
+    UserDashboardComponent,
+    ProductDashboardComponent
   ],
   imports: [
     BrowserModule,
