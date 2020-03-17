@@ -86,7 +86,7 @@
 
                         <div class="row">
                             <div class="col-auto">
-                                <button type="button" (click)="modificarUsuario(updatingUsuario)" class="btn btn-outline-success btn-sm" [disabled]="!updatingUsuario.nombres || !updatingUsuario.apellidos || !updatingUsuario.nombreUsuario || !updatingUsuario.userId || !updatingUsuario.direccion || !updatingUsuario.telefono || (updatingUsuario.rol == Rol)">Modificar</button>
+                                <button type="button" (click)="modificarUsuario(updatingUsuario)" class="btn btn-outline-success btn-sm" [disabled]="!updatingUsuario.nombres || !updatingUsuario.apellidos || !updatingUsuario.nombreUsuario || !updatingUsuario.userId || !updatingUsuario.direccion || !updatingUsuario.telefono || (updatingUsuario.rol == 'Rol')">Modificar</button>
                             </div>
                             <div class="col text-right">
                                 <button type="button" (click)="updateUsuario = !updateUsuario" class="btn btn-outline-danger btn-sm">Cancelar</button>
