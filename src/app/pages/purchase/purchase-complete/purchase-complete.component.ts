@@ -58,7 +58,7 @@ export class PurchaseCompleteComponent implements OnInit, OnDestroy {
   
                   this.cartService.updateCart(data_cart);
   
-                  /* Redirige al usuario a su pagina de cuenta */
+                  /* Redirige al usuario a su pagina de cuenta donde podra ver su pedido */
                   setTimeout(() => (this.router.navigate(['/user/'])), 2000);
   
                 }

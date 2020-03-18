@@ -21,7 +21,6 @@ export class PurchaseComponent implements OnInit, OnDestroy {
 
   precio: number;
 
-  //id_pedido: string;
   idCliente: string = null;
   precioPedido: number = null;
   metodoPago: string = 'Metodo de Pago';
@@ -64,6 +63,7 @@ export class PurchaseComponent implements OnInit, OnDestroy {
           data_user => {
 
             if(auth){
+              /* Entra al carrito del usuario para agregar los productos al pedido */
               this.susbscription = this.cartService.getCartProducts(auth.uid).subscribe(
                 data_products => {
   
@@ -71,13 +71,14 @@ export class PurchaseComponent implements OnInit, OnDestroy {
                   const data = {
                     idCliente: auth.uid,
                     nombreCliente: auth.displayName,
-                    productos: data_products,
+                    productos: data_products, // Asigna los productos del carrito al pedido
                     precioPedido: this.cart.precioTotal,
                     metodoPago: this.metodoPago,
                     dirEnvio: this.dirEnvio,
                     fechaPedido: fechaPedido,
                     estado: this.estado
                   }
+                  /* Añade el pedido del usuario */
                   this.pedidosService.addPedido(data);
   
                 }
