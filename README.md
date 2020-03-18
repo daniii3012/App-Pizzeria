@@ -15,6 +15,10 @@ npm install
 Antes de ejecutar el proyecto es necesario instalar Firebase en Angular, para ello ejecutar en consola:  
 npm install firebase @angular/fire --save   
 
+*PWA*  
+Tambien es necesario instalar PWA (Lo que permite  instalarla como aplicación)  
+ng add @angular/pwa  
+
 Para inicializar el proyecto:  
 ng serve   
 
