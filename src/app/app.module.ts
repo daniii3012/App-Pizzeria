@@ -25,6 +25,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashboard.component';
 import { ProductDashboardComponent } from './pages/admin/product-dashboard/product-dashboard.component';
+import { PurchaseComponent } from './pages/purchase/purchase.component';
+import { PurchaseCompleteComponent } from './pages/purchase/purchase-complete/purchase-complete.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ProductDashboardComponent } from './pages/admin/product-dashboard/produ
     RegisterComponent,
     CartComponent,
     UserDashboardComponent,
-    ProductDashboardComponent
+    ProductDashboardComponent,
+    PurchaseComponent,
+    PurchaseCompleteComponent
   ],
   imports: [
     BrowserModule,
