@@ -2,7 +2,7 @@
     <a class="navbar-brand" routerLink=""><i class="mdi mdi-pizza" style="color: #ffffff;"></i></a>
 
     <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span><span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span>
+      <span class="navbar-toggler-icon"></span><span *ngIf="notification > 0 && (rolUsuario != 'admin' && rolUsuario != 'empleado')" class="badge badge-light ml-1">{{ notification }}</span>
     </button>
 
     <div class="collapse navbar-collapse font-weight-bold" id="navbarSupportedContent">
@@ -11,10 +11,10 @@
                 <a class="nav-link" routerLink="/home">Inicio</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="/products">Productos</a>
+                <a *ngIf="rolUsuario != 'admin' && rolUsuario != 'empleado'" class="nav-link" routerLink="/products">Productos</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
-                <a *ngIf="auth.afAuth.authState | async as user" class="nav-link" routerLink="/user">Mi Cuenta</a>
+                <a *ngIf="rolUsuario != 'admin' && rolUsuario != 'empleado'" class="nav-link" routerLink="/user">Mi Cuenta</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
                 <a *ngIf="rolUsuario == 'admin' || rolUsuario == 'empleado'" class="nav-link" routerLink="/restaurant">Restaurante</a>
@@ -24,8 +24,8 @@
             </li>
         </ul>
         <div *ngIf="auth.afAuth.authState | async as user">
-            <button class="btn btn-outline-light" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i><span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span></button>
-            <button class="btn btn-outline-light ml-2" type="button" (click)="auth.logout()">Salir</button>
+            <button *ngIf="rolUsuario != 'admin' && rolUsuario != 'empleado'" class="btn btn-outline-light mr-2" type="button" routerLink="/cart"><i class="mdi mdi-cart"></i><span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span></button>
+            <button class="btn btn-outline-light" type="button" (click)="auth.logout()">Salir</button>
         </div>
     </div>
 </nav>

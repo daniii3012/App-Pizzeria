@@ -1,0 +1,15 @@
+<div class="container mt-3">
+    <div *ngIf="cart && cart.numProductos == 0">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card">
+                    <div *ngIf="auth.afAuth.authState | async as user" class="card-body text-center">
+                        <h5 class="card-title">
+                            Orden completa! {{ user.displayName }}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

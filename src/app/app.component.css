@@ -1,0 +1,11 @@
+@media (min-width: 768px) {
+    .padding {
+        padding-top: 57px;
+    }
+}
+
+@media (max-width: 767px) {
+    .padding {
+        padding-top: 49px;
+    }
+}
