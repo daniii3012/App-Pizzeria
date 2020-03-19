@@ -17,7 +17,7 @@ export class ProductDashboardComponent implements OnInit {
   id_producto: string;
   nombre: string;
   imagen: string;
-  tipo: string;
+  tipo: string = 'Tipo de Producto';
   precio: number;
   stock: number;
 
