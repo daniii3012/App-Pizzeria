@@ -23,3 +23,16 @@
     border: 0;
     background-color: #eeeeeee0;
 }
+
+.btn-outline-custom {
+    color: #f83a3a;
+    background-color: transparent;
+    background-image: none;
+    border-color: #f83a3a
+}
+
+.btn-outline-custom:hover {
+    color: #ffffff;
+    background-color: #f83a3a;
+    border-color: #f83a3a
+}

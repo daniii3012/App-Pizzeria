@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.productos = this.productosService.getProductosByType('Pizza');
   }
 
   productosByType(tipo: string){

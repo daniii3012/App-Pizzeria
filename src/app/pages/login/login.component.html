@@ -24,12 +24,12 @@
                                 </div>
                             </div>
                         </form>
-                        <button type="button" (click)="auth.login(this.email, this.password)" class="btn btn-outline-dark mb-2" type="submit" [disabled]="!email || !password">Ingresar</button>
+                        <button type="button" (click)="auth.login(this.email, this.password)" class="btn btn-outline-danger mb-2" type="submit" [disabled]="!email || !password">Ingresar</button>
 
                         <hr>
 
                         <p class="card-text mt-2">¿No tienes una cuenta aún? Crea una ahora mismo!</p>
-                        <button type="button" routerLink="/register" class="btn btn-outline-dark" type="button">Registrarse</button>
+                        <button type="button" routerLink="/register" class="btn btn-outline-danger" type="button">Registrarse</button>
                     </div>
                 </div>
             </div>

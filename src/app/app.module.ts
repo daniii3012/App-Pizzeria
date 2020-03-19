@@ -31,6 +31,7 @@ import { MeseroComponent } from './pages/store/mesero/mesero.component';
 import { CocinaComponent } from './pages/store/cocina/cocina.component';
 import { DomicilioComponent } from './pages/store/domicilio/domicilio.component';
 import { OrdenCompletaComponent } from './pages/store/mesero/orden-completa/orden-completa.component';
+import { OrderDashboardComponent } from './pages/admin/order-dashboard/order-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { OrdenCompletaComponent } from './pages/store/mesero/orden-completa/orde
     MeseroComponent,
     CocinaComponent,
     DomicilioComponent,
-    OrdenCompletaComponent
+    OrdenCompletaComponent,
+    OrderDashboardComponent
   ],
   imports: [
     BrowserModule,

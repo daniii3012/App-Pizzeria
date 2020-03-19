@@ -28,6 +28,7 @@ export class DomicilioComponent implements OnInit {
     const data_recibo = {
       idPedido: pedidoPendiente.id,
       idCliente: pedidoPendiente.idCliente,
+      productos: pedidoPendiente.productos,
       precioTotal: pedidoPendiente.precioPedido,
       modoPago: pedidoPendiente.metodoPago,
       fechaPago: fechaPago

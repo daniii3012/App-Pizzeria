@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="col text-right">
-            <button type="button" routerLink="/restaurant" class="btn btn-outline-primary btn-sm">Volver</button>
+            <button type="button" routerLink="/restaurant" class="btn btn-outline-primary">Volver</button>
         </div>
     </div>
 
@@ -18,8 +18,8 @@
                     <h5 class="card-title">Orden Actual</h5>
                 </div>
                 <div class="col text-right">
-                    <a (click)="verOrden = !verOrden" class="btn btn-outline-info btn-sm ml-1" data-toggle="collapse" href="#ID{{ cart.idCliente }}" role="button" aria-expanded="false">
-                        Ver Orden
+                    <a (click)="verOrden = !verOrden" class="btn btn-outline-info ml-1" data-toggle="collapse" href="#ID{{ cart.idCliente }}" role="button" aria-expanded="false">
+                        Orden<span *ngIf="notification > 0" class="badge badge-light ml-1">{{ notification }}</span>
                     </a>
                 </div>
             </div>
@@ -46,7 +46,6 @@
                         <p>{{ cart.precioTotal | currency:'COP' }}</p>
                     </div>
                     <div class="col-2 text-center">
-                        <button type="button" *ngIf="cart.numProductos > 0" routerLink="/" class="btn btn-outline-success btn-sm"><i class="mdi mdi-chevron-right"></i></button>
                     </div>
                 </div>
                 <hr>
@@ -67,14 +66,16 @@
                         <button type="button" (click)="ordenar()" [disabled]="(metodoPago == 'Metodo de Pago') || ordenEnProceso || (cart.numProductos == 0)" class="btn btn-outline-success">Ordenar</button>
                     </div>
                 </div>
-                <div *ngIf="ordenEnProceso" class="card-text row">
-                    <hr>
-                    <h5 *ngIf="auth.afAuth.authState | async as user">
-                        Procesando Orden
-                        <div class="spinner-grow text-dark ml-2" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </h5>
+                <div *ngIf="ordenEnProceso" class="card-text row text-center">
+                    <div class="col">
+                        <hr>
+                        <h5 *ngIf="auth.afAuth.authState | async as user">
+                            Procesando Orden
+                            <div class="spinner-grow text-warning ml-2" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,13 +86,13 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Buscar Producto</h5>
-                <button type="button" (click)="productosByType('Pizza')" class="btn btn-outline-info m-1">Pizzas</button>
-                <button type="button" (click)="productosByType('Bebida')" class="btn btn-outline-info m-1">Bebidas</button>
+                <button type="button" (click)="productosByType('Pizza')" class="btn btn-outline-warning m-1">Pizzas</button>
+                <button type="button" (click)="productosByType('Bebida')" class="btn btn-outline-warning m-1">Bebidas</button>
             </div>
         </div>
 
         <!-- Muestra los productos -->
-        <div *ngFor="let producto of productos | async">
+        <div *ngFor="let producto of productos | async" class="mt-3">
             <div class="row no-gutters">
                 <div class="col-md-2 col-4 p-0 m-0">
                     <img src="{{ producto.imagen }}" class="card-img" alt="{{ producto.nombre }}">

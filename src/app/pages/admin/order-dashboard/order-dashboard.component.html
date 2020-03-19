@@ -1,0 +1,56 @@
+<div class="container mt-3 mb-3">
+
+    <div class="row mb-3">
+        <div class="col-auto">
+            <div *ngIf="auth.afAuth.authState | async as user">
+                <h5>Administrador: {{ user.displayName }}</h5>
+            </div>
+        </div>
+        <div class="col text-right">
+            <button type="button" routerLink="/admin" class="btn btn-outline-primary">Volver</button>
+        </div>
+    </div>
+
+    <h5 class="mt-3">Lista de Pedidos</h5>
+    <!-- Lista de productos -->
+    <div *ngFor="let pedido of pedidos | async">
+        <hr>
+        <div class="row">
+            <div class="col-auto">
+                <div>Pedido #{{ pedido.id }}
+                    <span *ngIf="pedido.estado == true && pedido.dirEnvio != 'Restaurante'" class="badge badge-primary ml-1">Domicilio</span>
+                    <span *ngIf="pedido.estado == true && pedido.dirEnvio == 'Restaurante'" class="badge badge-secondary ml-1">Restaurante</span>
+                    <span *ngIf="pedido.estado == false && pedido.dirEnvio != 'Restaurante'" class="badge badge-danger ml-1">Domicilio</span>
+                    <span *ngIf="pedido.estado == false && pedido.dirEnvio == 'Restaurante'" class="badge badge-warning ml-1">Restaurante</span>
+                </div>
+            </div>
+            <div class="col text-right">
+                <a *ngIf="pedido.estado == true" class="btn btn-outline-info btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedido.id }}" role="button" aria-expanded="false">
+                    <i class="mdi mdi-plus"></i>
+                </a>
+                <a *ngIf="pedido.estado == false" class="btn btn-outline-danger btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedido.id }}" role="button" aria-expanded="false">
+                    <i class="mdi mdi-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="collapse" id="Pedido{{ pedido.id }}">
+            <div>
+                <div>Fecha de Pedido: {{ pedido.fechaPedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+                <div *ngIf="pedido.estado == true">Estado: Completado</div>
+                <div *ngIf="pedido.estado == false">Estado: Pendiente</div>
+                <div *ngIf="pedido.dirEnvio != 'Restaurante'">Cliente: {{ pedido.nombreCliente }}</div>
+                <div *ngIf="pedido.dirEnvio != 'Restaurante'">ID Cliente: {{ pedido.idCliente }}</div>
+                <div>Direccion de Envio: {{ pedido.dirEnvio }}</div>
+                <div>Productos:
+                    <div *ngFor="let producto of pedido.productos" class="row">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="col-7">{{ producto.nombre }}</div>
+                        <div class="col-auto text-left">{{ producto.precio | currency:'COP' }}</div>
+                    </div>
+                </div>
+                <div>Metodo de Pago: {{ pedido.metodoPago }}</div>
+                <div>Precio del Pedido: {{ pedido.precioPedido | currency:'COP' }}</div>
+            </div>
+        </div>
+    </div>
+</div>

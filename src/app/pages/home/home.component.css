@@ -29,6 +29,10 @@
     margin: 0 !important;
 }
 
+.text-custom {
+    color: #ffba3a;
+}
+
 
 /* CSS importado */
 
@@ -146,5 +150,5 @@
     -webkit-transform: rotate(135deg);
     -ms-transform: rotate(135deg);
     transform: rotate(135deg);
-    background: #f8b500;
+    background: #ffffff;
 }

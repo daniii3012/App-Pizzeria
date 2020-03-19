@@ -44,7 +44,7 @@
                                     <button type="button" (click)="comprar()" [disabled]="(metodoPago == 'Metodo de Pago') || compraEnProceso" class="btn btn-outline-success">Comprar</button>
                                 </div>
                                 <div class="col text-right">
-                                    <button type="button" (click)="volver()" class="btn btn-outline-danger">Volver</button>
+                                    <button type="button" (click)="volver()" class="btn btn-outline-custom">Volver</button>
                                 </div>
                             </div>
 
@@ -54,7 +54,7 @@
                             <div *ngIf="compraEnProceso">
                                 <h5 *ngIf="auth.afAuth.authState | async as user" class="card-text text-center">
                                     Procesando Compra
-                                    <div class="spinner-grow text-dark ml-2" role="status">
+                                    <div class="spinner-grow text-warning ml-2" role="status">
                                         <span class="sr-only">Loading...</span>
                                     </div>
                                 </h5>

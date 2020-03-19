@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 })
 export class MeseroComponent implements OnInit, OnDestroy {
 
+  notification: number;
+
   susbscription: any; // Permite cerrar el Observable al cambiar de componente, esto con el fin de evitar inconsistencias durante la orden
 
   cart: any;
@@ -42,7 +44,10 @@ export class MeseroComponent implements OnInit, OnDestroy {
       auth => {
         if(auth){
           this.cartService.getCart(auth.uid).subscribe(
-            data => this.cart = data
+            data => {
+              this.cart = data
+              this.notification = data.numProductos
+            }
           );
           
           this.productosOrden = this.cartService.getCartProducts(auth.uid);
@@ -50,6 +55,7 @@ export class MeseroComponent implements OnInit, OnDestroy {
       }
     );
 
+    this.productos = this.productosService.getProductosByType('Pizza');
     this.ordenEnProceso = false;
     this.susbscription = null;
   }

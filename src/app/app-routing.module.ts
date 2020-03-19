@@ -19,6 +19,7 @@ import { MeseroComponent } from './pages/store/mesero/mesero.component';
 import { CocinaComponent } from './pages/store/cocina/cocina.component';
 import { DomicilioComponent } from './pages/store/domicilio/domicilio.component';
 import { OrdenCompletaComponent } from './pages/store/mesero/orden-completa/orden-completa.component';
+import { OrderDashboardComponent } from './pages/admin/order-dashboard/order-dashboard.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'admin/products', component: ProductDashboardComponent, canActivate: [AdminGuard] },
   { path: 'admin/users', component: UserDashboardComponent, canActivate: [AdminGuard] },
+  { path: 'admin/orders', component:OrderDashboardComponent, canActivate: [AdminGuard] },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

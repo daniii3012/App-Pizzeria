@@ -1,0 +1,18 @@
+.card-img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.btn-outline-custom {
+    color: #ffba3a;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ffba3a
+}
+
+.btn-outline-custom:hover {
+    color: #ffffff;
+    background-color: #ffba3a;
+    border-color: #ffba3a
+}
