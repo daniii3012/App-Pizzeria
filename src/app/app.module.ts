@@ -27,6 +27,10 @@ import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashbo
 import { ProductDashboardComponent } from './pages/admin/product-dashboard/product-dashboard.component';
 import { PurchaseComponent } from './pages/purchase/purchase.component';
 import { PurchaseCompleteComponent } from './pages/purchase/purchase-complete/purchase-complete.component';
+import { MeseroComponent } from './pages/store/mesero/mesero.component';
+import { CocinaComponent } from './pages/store/cocina/cocina.component';
+import { DomicilioComponent } from './pages/store/domicilio/domicilio.component';
+import { OrdenCompletaComponent } from './pages/store/mesero/orden-completa/orden-completa.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import { PurchaseCompleteComponent } from './pages/purchase/purchase-complete/pu
     UserDashboardComponent,
     ProductDashboardComponent,
     PurchaseComponent,
-    PurchaseCompleteComponent
+    PurchaseCompleteComponent,
+    MeseroComponent,
+    CocinaComponent,
+    DomicilioComponent,
+    OrdenCompletaComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,7 @@ import { PurchaseCompleteComponent } from './pages/purchase/purchase-complete/pu
     AngularFireStorageModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,120 @@
+<div class="container mt-3">
+    <div class="row mb-3">
+        <div class="col-auto">
+            <div *ngIf="auth.afAuth.authState | async as user">
+                <h5>Mesero: {{ user.displayName }}</h5>
+            </div>
+        </div>
+        <div class="col text-right">
+            <button type="button" routerLink="/restaurant" class="btn btn-outline-primary btn-sm">Volver</button>
+        </div>
+    </div>
+
+    <!-- Muestra los productos agregados a la orden actual -->
+    <div *ngIf="cart" class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-auto">
+                    <h5 class="card-title">Orden Actual</h5>
+                </div>
+                <div class="col text-right">
+                    <a (click)="verOrden = !verOrden" class="btn btn-outline-info btn-sm ml-1" data-toggle="collapse" href="#ID{{ cart.idCliente }}" role="button" aria-expanded="false">
+                        Ver Orden
+                    </a>
+                </div>
+            </div>
+
+            <div class="collapse" id="ID{{ cart.idCliente }}">
+                <hr>
+                <div *ngFor="let productoOrden of productosOrden | async" class="card-text row mb-1">
+                    <div class="col-5 text-left">
+                        {{ productoOrden.nombre }}
+                    </div>
+                    <div class="col-4 text-center">
+                        {{ productoOrden.precio | currency:'COP' }}
+                    </div>
+                    <div class="col-2 text-center">
+                        <button type="button" (click)="deleteProducto(cart.idCliente, productoOrden.id, productoOrden)" class="btn btn-outline-danger btn-sm"><i class="mdi mdi-minus"></i></button>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-text row mb-1">
+                    <div class="col-5 text-left">
+                        <p>Precio Total</p>
+                    </div>
+                    <div class="col-4 text-center">
+                        <p>{{ cart.precioTotal | currency:'COP' }}</p>
+                    </div>
+                    <div class="col-2 text-center">
+                        <button type="button" *ngIf="cart.numProductos > 0" routerLink="/" class="btn btn-outline-success btn-sm"><i class="mdi mdi-chevron-right"></i></button>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-text row">
+                    <div class="col-6 text-left">
+                        Metodo de Pago:
+                    </div>
+                    <div class="col-5 text-right">
+                        <select [(ngModel)]="metodoPago" name="metodoPago" class="browser-default custom-select mb-2">
+                            <option class="metodoPago" value="Metodo de Pago" disabled selected>Metodo de Pago</option>
+                            <option class="metodoPago" value="Efectivo">Efectivo</option>
+                            <option class="metodoPago" value="Tarjeta de Credito" disabled>Tarjeta de Credito</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-text row">
+                    <div class="col">
+                        <button type="button" (click)="ordenar()" [disabled]="(metodoPago == 'Metodo de Pago') || ordenEnProceso || (cart.numProductos == 0)" class="btn btn-outline-success">Ordenar</button>
+                    </div>
+                </div>
+                <div *ngIf="ordenEnProceso" class="card-text row">
+                    <hr>
+                    <h5 *ngIf="auth.afAuth.authState | async as user">
+                        Procesando Orden
+                        <div class="spinner-grow text-dark ml-2" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!verOrden">
+        <!-- Busca los productos para tomar el pedido -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Buscar Producto</h5>
+                <button type="button" (click)="productosByType('Pizza')" class="btn btn-outline-info m-1">Pizzas</button>
+                <button type="button" (click)="productosByType('Bebida')" class="btn btn-outline-info m-1">Bebidas</button>
+            </div>
+        </div>
+
+        <!-- Muestra los productos -->
+        <div *ngFor="let producto of productos | async">
+            <div class="row no-gutters">
+                <div class="col-md-2 col-4 p-0 m-0">
+                    <img src="{{ producto.imagen }}" class="card-img" alt="{{ producto.nombre }}">
+                </div>
+                <div class="col-md-10 col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <div class="card-text">
+                            <div class="row">
+                                <div class="col-auto text-left">
+                                    <span>Precio: {{ producto.precio }}</span><br>
+                                    <span *ngIf="producto.stock == 0">No Disponible</span>
+                                </div>
+                                <div class="col text-right" *ngIf="producto.stock > 0" style="vertical-align: middle">
+                                    <button type="button" (click)="addCart(producto)" class="btn btn-outline-success btn-sm"><i class="mdi mdi-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+</div>

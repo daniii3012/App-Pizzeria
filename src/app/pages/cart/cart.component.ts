@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
 
   cart: any;
   productos: Observable<any[]>;
+  rolUsuario: string;
 
   constructor(
     private cartService: CartService,
@@ -29,6 +30,10 @@ export class CartComponent implements OnInit {
           );
           
           this.productos = this.cartService.getCartProducts(auth.uid);
+
+          this.auth.getUserById(auth.uid).subscribe(
+            data => this.rolUsuario = data.rol
+          )
         }
       }
     )

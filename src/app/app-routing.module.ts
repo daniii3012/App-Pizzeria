@@ -15,6 +15,10 @@ import { ProductDashboardComponent } from './pages/admin/product-dashboard/produ
 import { UserDashboardComponent } from './pages/admin/user-dashboard/user-dashboard.component';
 import { PurchaseCompleteComponent } from './pages/purchase/purchase-complete/purchase-complete.component';
 import { PurchaseComponent } from './pages/purchase/purchase.component';
+import { MeseroComponent } from './pages/store/mesero/mesero.component';
+import { CocinaComponent } from './pages/store/cocina/cocina.component';
+import { DomicilioComponent } from './pages/store/domicilio/domicilio.component';
+import { OrdenCompletaComponent } from './pages/store/mesero/orden-completa/orden-completa.component';
 
 
 const routes: Routes = [
@@ -27,6 +31,10 @@ const routes: Routes = [
   { path: 'purchase', component: PurchaseComponent, canActivate: [AuthGuard] },
   { path: 'purchase-complete', component: PurchaseCompleteComponent, canActivate: [AuthGuard] },
   { path: 'restaurant', component: StoreComponent, canActivate: [EmpleadoGuard] },
+  { path: 'restaurant/waiter', component: MeseroComponent, canActivate: [EmpleadoGuard] },
+  { path: 'restaurant/waiter/order-complete', component: OrdenCompletaComponent, canActivate: [EmpleadoGuard] },
+  { path: 'restaurant/kitchen', component: CocinaComponent, canActivate: [EmpleadoGuard] },
+  { path: 'restaurant/domicilios', component: DomicilioComponent, canActivate: [EmpleadoGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'admin/products', component: ProductDashboardComponent, canActivate: [AdminGuard] },
   { path: 'admin/users', component: UserDashboardComponent, canActivate: [AdminGuard] },
