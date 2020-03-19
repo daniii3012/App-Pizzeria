@@ -1,1 +1,72 @@
-<p>user works!</p>
+<div *ngIf="auth.afAuth.authState | async as user" class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h5>Bienvenido {{ user.displayName }}</h5>
+            <p>A continuación puedes consultar tus pedidos pendientes y tu historial de pedidos.</p>
+            <button type="button" (click)="verPedidosPendientes = !verPedidosPendientes; verPedidosCompletados = false" class="btn btn-outline-secondary btn-sm m-1">Pedidos Pendientes</button>
+            <button type="button" (click)="verPedidosCompletados = !verPedidosCompletados; verPedidosPendientes = false" class="btn btn-outline-secondary btn-sm m-1">Historial de Pedidos</button>
+
+            <div *ngIf="verPedidosPendientes">
+                <div *ngFor="let pedidoPendiente of pedidosPendientes | async" class="card-text">
+                    <hr>
+                    <div class="row">
+                        <div class="col-auto">
+                            <div><b>Pedido #{{ pedidoPendiente.id }}</b></div>
+                        </div>
+                        <div class="col text-right">
+                            <a class="btn btn-outline-success btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedidoPendiente.id }}" role="button" aria-expanded="false">
+                                <i class="mdi mdi-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="Pedido{{ pedidoPendiente.id }}">
+                        <div class="text-info">Pedido Aceptado</div>
+                        <div>Fecha del Pedido: {{ pedidoPendiente.fechaPedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+                        <div>Direccion de Envio: {{ pedidoPendiente.dirEnvio }}</div>
+                        <div>Productos:
+                            <div *ngFor="let producto of pedidoPendiente.productos" class="row">
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="col-7">{{ producto.nombre }}</div>
+                                <div class="col-auto text-left">{{ producto.precio | currency:'COP' }}</div>
+                            </div>
+                        </div>
+                        <div>Precio Total: {{ pedidoPendiente.precioPedido | currency:'COP' }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="verPedidosCompletados">
+                <div *ngFor="let pedidoCompletado of pedidosCompletados | async" class="card-text">
+                    <hr>
+                    <div class="row">
+                        <div class="col-auto">
+                            <div>Recibo #{{ pedidoCompletado.id }}</div>
+                        </div>
+                        <div class="col text-right">
+                            <a class="btn btn-outline-info btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedidoCompletado.id }}" role="button" aria-expanded="false">
+                                <i class="mdi mdi-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="Pedido{{ pedidoCompletado.id }}">
+                        <div class="text-success">Pedido Entregado</div>
+                        <div>ID Pedido: {{ pedidoCompletado.idPedido }}</div>
+                        <div>Fecha de Pago: {{ pedidoCompletado.fechaPago.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+                        <!--
+                        <div>Productos:
+                            <div *ngFor="let producto of pedidoCompletado.productos" class="row">
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="col-7">{{ producto.nombre }}</div>
+                                <div class="col-auto text-left">{{ producto.precio | currency:'COP' }}</div>
+                            </div>
+                        </div>
+                        -->
+                        <div>Metodo de Pago: {{ pedidoCompletado.modoPago }}</div>
+                        <div>Precio Total: {{ pedidoCompletado.precioTotal | currency:'COP' }}</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

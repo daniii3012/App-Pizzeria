@@ -1,1 +1,48 @@
-<p>domicilio works!</p>
+<div class="container mt-3">
+    <div class="row mb-3">
+        <div class="col-auto">
+            <div *ngIf="auth.afAuth.authState | async as user">
+                <h5>Domiciliario: {{ user.displayName }}</h5>
+            </div>
+        </div>
+        <div class="col text-right">
+            <button type="button" routerLink="/restaurant" class="btn btn-outline-primary btn-sm">Volver</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div *ngFor="let pedidoPendiente of pedidosPendientes | async" class="card-text">
+                <div *ngIf="pedidoPendiente.dirEnvio != 'Restaurante'">
+                    <div class="row">
+                        <div class="col-auto">
+                            <div>Pedido #{{ pedidoPendiente.id }}</div>
+                        </div>
+                        <div class="col text-right">
+                            <a class="btn btn-outline-success btn-sm ml-1" data-toggle="collapse" href="#Pedido{{ pedidoPendiente.id }}" role="button" aria-expanded="false">
+                                <i class="mdi mdi-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="Pedido{{ pedidoPendiente.id }}">
+                        <div class="text-info">Pedido Aceptado</div>
+                        <div>Fecha del pedido: {{ pedidoPendiente.fechaPedido.seconds * 1000 | date: 'MMM d, y, h:mm:ss a' }}</div>
+                        <div>Cliente: {{ pedidoPendiente.nombreCliente }}</div>
+                        <div>Direccion de Envio: {{ pedidoPendiente.dirEnvio }}</div>
+                        <div>Productos:
+                            <div *ngFor="let producto of pedidoPendiente.productos" class="row">
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="col-7">{{ producto.nombre }}</div>
+                                <div class="col-auto text-left">{{ producto.precio | currency:'COP' }}</div>
+                            </div>
+                        </div>
+                        <div>Precio Total: {{ pedidoPendiente.precioPedido | currency:'COP' }}</div>
+                        <div>Metodo de Pago: {{ pedidoPendiente.metodoPago }}</div>
+                        <button type="button" (click)="entregarPedido(pedidoPendiente)" class="btn btn-outline-secondary">Entregar Pedido</button>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

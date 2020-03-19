@@ -50,10 +50,44 @@ export class PedidosService {
     ));
   }
 
-  /* Obtiene un pedido por su id */
-  getPedidoById(idCliente: string){
+  /* Obtiene los pedidos entregados (estado == true) */
+  getPedidosCompletados(){
     return this.db.collection('pedidos', order => order.orderBy("fechaPedido", "desc")
-    .where("idCliente", "==", `${idCliente}`)).snapshotChanges().pipe(map(
+    .where("estado", "==", true)).snapshotChanges().pipe(map(
+      actions => {
+        return actions.map(
+          a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          }
+        )
+      }
+    ));
+  }
+
+  /* Obtiene los pedidos no entregados por id del cliente */
+  getPedidosPendientesById(idCliente: string){
+    return this.db.collection('pedidos', order => order.orderBy("fechaPedido", "desc")
+    .where("idCliente", "==", `${idCliente}`)
+    .where("estado", "==", false)).snapshotChanges().pipe(map(
+      actions => {
+        return actions.map(
+          a => {
+            const data = a.payload.doc.data() as any;
+            data.id = a.payload.doc.id;
+            return data;
+          }
+        )
+      }
+    ));
+  }
+
+  /* Obtiene los pedidos entregados por id del cliente */
+  getPedidosCompletadosById(idCliente: string){
+    return this.db.collection('pedidos', order => order.orderBy("fechaPedido", "desc")
+    .where("idCliente", "==", `${idCliente}`)
+    .where("estado", "==", true)).snapshotChanges().pipe(map(
       actions => {
         return actions.map(
           a => {
